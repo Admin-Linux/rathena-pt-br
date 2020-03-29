@@ -2,71 +2,64 @@
 
 # rAthena
 [![Build Status](https://travis-ci.org/rathena/rathena.png?branch=master)](https://travis-ci.org/rathena/rathena) [![Build status](https://ci.appveyor.com/api/projects/status/8574b8nlwd57loda/branch/master?svg=true)](https://ci.appveyor.com/project/rAthenaAPI/rathena/branch/master) [![Total alerts](https://img.shields.io/lgtm/alerts/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/alerts/) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/context:cpp) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
-> rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
+> O rAthena é um projeto colaborativo de desenvolvimento de software que gira em torno da criação de um robusto pacote de servidores MMORPG (MMORPG). Escrito em C, o programa é muito versátil e fornece NPCs, warps e modificações. O projeto é gerenciado em conjunto por um grupo de voluntários localizados em todo o mundo, além de uma enorme comunidade fornecendo controle de qualidade e apoio. rAthena é uma continuação do projeto eAthena.
 
-[Forum](https://rathena.org/board)|[Discord](https://rathena.org/discord)|[Wiki](https://github.com/rathena/rathena/wiki)|[FluxCP](https://github.com/rathena/FluxCP)|[Crowdfunding](https://rathena.org/board/crowdfunding/)|[Fork and Pull Request Q&A](https://rathena.org/board/topic/86913-pull-request-qa/)
+[Forum](https://rathena.org/board)|[Discord](https://rathena.org/discord)|[Wiki](https://github.com/rathena/rathena/wiki)|[FluxCP](https://github.com/rathena/FluxCP)|[Financiamento colaborativo](https://rathena.org/board/crowdfunding/)|[Perguntas e respostas sobre solicitação de garfo e tração](https://rathena.org/board/topic/86913-pull-request-qa/)
 --------|--------|--------|--------|--------|--------
 
-### Table of Contents
-1. [Prerequisites](#1-prerequisites)
-2. [Installation](#2-installation)
-3. [Troubleshooting](#3-troubleshooting)
-4. [More Documentation](#4-more-documentation)
-5. [How to Contribute](#5-how-to-contribute)
-6. [License](#6-license)
+### Índice
+1. [Pré-requisitos](#1-prerequisites)
+2. [Instalação](#2-installation)
+3. [Solução de problemas](#3-troubleshooting)
+4. [Mais documentação](#4-more-documentation)
+5. [Como Contribuir](#5-how-to-contribute)
+6. [Licença](#6-license)
 
-## 1. Prerequisites
-Before installing rAthena there are certain tools and applications you will need which
-differs between the varying operating systems available.
+## 1. Pré-requisitos
+Antes de instalar o rAthena, são necessárias algumas ferramentas e aplicativos que diferem entre os diferentes sistemas operacionais disponíveis.
 
 ### Hardware
-Hardware Type | Minimum | Recommended
+Tipo de Hardware | Mínimo | Recomendado
 ------|------|------
-CPU | 1 Core | 2 Cores
+CPU | 1 Núcleo | 2 núcleos
 RAM | 1 GB | 2 GB
-Disk Space | 300 MB | 500 MB
+Espaço em disco | 300 MB | 500 MB
 
-### Operating System & Preferred Compiler
-Operating System | Compiler
+### Sistema operacional e compilador preferido
+Sistema operacional | Compilador
 ------|------
-Linux  | [gcc-5 or newer](https://www.gnu.org/software/gcc/gcc-5/) / [Make](https://www.gnu.org/software/make/)
+Linux  | [gcc-5 ou mais recente](https://www.gnu.org/software/gcc/gcc-5/) / [Make](https://www.gnu.org/software/make/)
 Windows | [MS Visual Studio 2013, 2015, 2017](https://www.visualstudio.com/downloads/)
 
-### Required Applications
-Application | Name
+### Aplicações Necessárias
+Aplicações | Nome
 ------|------
-Database | [MySQL 5 or newer](https://www.mysql.com/downloads/) / [MariaDB 5 or newer](https://downloads.mariadb.org/)
+Base de dados | [MySQL 5 ou mais recente](https://www.mysql.com/downloads/) / [MariaDB 5 ou mais recente](https://downloads.mariadb.org/)
 Git | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux)
 
-### Optional Applications
-Application | Name
+### Aplicações opcionais
+Aplicações | Nome
 ------|------
-Database | [MySQL Workbench 5 or newer](http://www.mysql.com/downloads/workbench/)
+Base de dados | [MySQL Workbench 5 or newer](http://www.mysql.com/downloads/workbench/)
 
-## 2. Installation 
+## 2. Instalação
 
-### Full Installation Instructions
+### Instruções completas de instalação
   * [Windows](https://github.com/rathena/rathena/wiki/Install-on-Windows)
   * [CentOS](https://github.com/rathena/rathena/wiki/Install-on-Centos)
   * [Debian](https://github.com/rathena/rathena/wiki/Install-on-Debian)
   * [FreeBSD](https://github.com/rathena/rathena/wiki/Install-on-FreeBSD)
 
-## 3. Troubleshooting
+## 3. Solução de problemas
 
-If you're having problems with starting your server, the first thing you should
-do is check what's happening on your consoles. More often that not, all support issues
-can be solved simply by looking at the error messages given. Check out the [wiki](https://github.com/rathena/rathena/wiki)
-or [forums](https://rathena.org/forum) if you need more support on troubleshooting.
+Se você está tendo problemas para iniciar o servidor, a primeira coisa a fazer é verificar o que está acontecendo nos seus consoles. Na maioria das vezes, todos os problemas de suporte podem ser resolvidos simplesmente observando as mensagens de erro fornecidas. Confira o [wiki](https://github.com/rathena/rathena/wiki)
+ou os [forums](https://rathena.org/forum) se precisar de mais suporte na solução de problemas.
 
-## 4. More Documentation
-rAthena has a large collection of help files and sample NPC scripts located in the /doc/
-directory. These include detailed explanations of NPC script commands, atcommands (@),
-group permissions, item bonuses, and packet structures, among many other topics. We
-recommend that all users take the time to look over this directory before asking for
-assistance elsewhere.
+## 4. Mais documentação
+O rAthena possui uma grande coleção de arquivos de ajuda e scripts NPC de amostra localizados no diretório /doc/. Isso inclui explicações detalhadas dos comandos de script do NPC, comandos at(@), permissões de grupo, bônus de itens e estruturas de pacotes, entre muitos outros tópicos. Recomendamos que todos os usuários analisem este diretório antes de solicitar assistência em outro lugar.
 
-## 5. How to Contribute
-Details on how to contribute to rAthena can be found in [CONTRIBUTING.md](https://github.com/rathena/rathena/blob/master/.github/CONTRIBUTING.md)!
+## 5. Como contribuir
+Detalhes sobre como contribuir com o rAthena podem ser encontrados em [CONTRIBUTING.md](https://github.com/rathena/rathena/blob/master/.github/CONTRIBUTING.md)!
 
-## 6. License
-Copyright (c) rAthena Development Team - Licensed under [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)
+## 6. Licença
+Copyright (c) rAthena Development Team - Licenciado sob a [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)

@@ -12,6 +12,8 @@
 //= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
 //= 1.1 Removed dialog from interior flags. [L0ne_W0lf]
 //= 1.2 Partially rewrote Script. [Masao]
+//= traduzido por [Haikenz]
+//= revisado por [Admin-Linux]
 //============================================================
 
 // Guild Flag (Outside Castle)
@@ -21,25 +23,20 @@
 	set .@GID, GetCastleData("gefg_cas02",1);
 
 	if (.@GID == 0) {
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ Decreto de Rune-Midgard ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. Pela ordenança do Divino Reino de Rune-Midgad, declaramos que não há nenhum mestre formal deste castelo.";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. Para quem puder superar todas provações e destruír o Emperium.";
+		mes "O rei vai reconhecer esse como proprietário do castelo.";
 		close;
 	}
 	if (getcharid(2) == .@GID) {
-		mes "[ Echoing Voice ]";
-		mes "Brave ones...";
-		mes "Do you wish to return to your honorable place?";
+		mes "[ Voz Sussurrando ]";
+		mes "Aos bravos...";
+		mes "Deseja retornar ao seu palácio de honra?";
 		next;
-		if(select("Return to the guild castle.:Quit.") == 1) {
+		if(select("Retornar ao Castelo.:Sair.") == 1) {
 			close2;
 			if (getcharid(2) == GetCastleData("gefg_cas02",1)) {
 				warp "gefg_cas02",178,43;
@@ -49,16 +46,14 @@
 		}
 		close;
 	}
-	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes "[ Decreto de Rune-Midgard ]";
 	mes " ";
-	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-	mes "we approve that this place is in";
-	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes "1. Pela ordenança do Divino Reino de Rune-Midgard que este lugar é de posse privada do Clã:";
+	mes "^ff0000"+GetGuildName(.@GID)+"^000000.";
 	mes " ";
-	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
-	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
-	mes "If there is anyone who objects to this,";
-	mes "prove your strength and honor with a steel blade in your hand.";
+	mes "2. O mestre deste castelo ^ff0000"+GetGuildName(.@GID)+"^000000 é ^ff0000"+GetGuildMaster(.@GID)+"^000000.";
+	mes "Se há alguém que se opõe a isso.";
+	mes "Prove sua força e honra com uma lâmina de aço em sua mão.";
 	close;
 
 OnRecvCastleG02:
@@ -105,9 +100,9 @@ gefg_cas02,12,66,5	duplicate(cm)	Esmarehk#gefg_cas02	55
 //============================================================
 gefg_cas02,145,114,0	script	#lever_G02	111,{
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "Há uma alavanca pequena. Puxar isto?";
 	next;
-	if(select("Pull.:Do not.") == 1) {
+	if(select("Puxar.:Não Puxar.") == 1) {
 		close2;
 		warp "gefg_cas02",12,67;
 		end;
@@ -117,11 +112,11 @@ gefg_cas02,145,114,0	script	#lever_G02	111,{
 
 // Guild Dungeon Switch
 //============================================================
-gefg_cas02,167,40,0	duplicate(gdlever)	#gefg_cas02	111
+gefg_cas02,167,40,0	duplicate(gdlever)	#gefg_cas02	HIDDEN_NPC
 
 // Guild Treasure Spawns
 //============================================================
-gefg_cas02,140,116,0	duplicate(Gld_Trea_Spawn)	Treasure#gefg_cas02	-1
+gefg_cas02,140,116,0	duplicate(Gld_Trea_Spawn)	Baú do Tesouro#gefg_cas02	-1
 
 // AGIT Manager
 //============================================================
@@ -129,4 +124,4 @@ gefg_cas02,176,178,0	duplicate(Gld_Agit_Manager)	Agit#gefg_cas02	-1
 
 // Guardians
 //============================================================
-gefg_cas02,12,66,5	duplicate(Gld_Guard_Template)	Guardian#gefg_cas02	-1
+gefg_cas02,12,66,5	duplicate(Gld_Guard_Template)	Guardião#gefg_cas02	-1

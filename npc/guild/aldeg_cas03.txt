@@ -49,7 +49,6 @@
 	mes "[Decreto de Rune-Midgard]";
 	mes " ";
 	mes "1. Pela ordenança do Divino Reino de Rune-Midgard que este lugar é de posse privada do Clã:";
-  
 	mes "^ff0000"+GetGuildName(.@GID)+"^000000.";
 	mes " ";
 	mes "2. O mestre deste castelo ^ff0000"+GetGuildName(.@GID)+"^000000 é ^ff0000"+GetGuildMaster(.@GID)+"^000000.";

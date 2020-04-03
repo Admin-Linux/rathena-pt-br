@@ -13,9 +13,11 @@
 //= 1.4 Added GM management function. [Euphy]
 //= 1.5 Added VIP features and created a reward function. [Euphy]
 //= 1.6 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
+//= traduzido por [Haikenz]
+//= revisado por [Admin-Linux]
 //============================================================
 
-// Waiting Room NPCs
+// Sala de Espera.
 //============================================================
 bat_room,114,227,5	script	Lieutenant Rundel	418,{
 	end;
@@ -96,7 +98,7 @@ OnTouch:
 bat_room,113,220,0	warp	back_bgrooma02a	1,1,bat_room,154,150
 bat_room,113,211,0	warp	back_bgrooma02b	1,1,bat_room,154,150
 
-// Tierra Gorge Battleground Engine
+// Engine do Campo de Batalha do Desfiladeiro Tierra
 //============================================================
 bat_a02,15,15,3	script	start#bat_a02	844,{
 OnInit:
@@ -150,7 +152,7 @@ OnReadyCheck:
 	if (!getbattleflag("feature.bgqueue")) {
 		donpcevent "Lieutenant Rundel::OnEnterBG";
 		donpcevent "Lieutenant Guerrit::OnEnterBG";
-	}
+  
 	donpcevent "start#bat_a02::OnEnable";
 	bg_warp $@TierraBG2_id1,"bat_a02",352,342;
 	bg_warp $@TierraBG2_id2,"bat_a02",353,52;
@@ -179,7 +181,7 @@ OnMyMobDead:
 		set $@TierraBG2_Victory, 2;
 		enablenpc "Guillaume Vintenar#a02_a";
 		enablenpc "Croix Vintenar#a02_b";
-		mapannounce "bat_a02", "Croix Vintenar Swandery: We destroyed Guillaume's Food Storage. We won that! Wow!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Croix Vintenar Swandery: Nós destruímos os Suprimentos dos Guillaumes. Nós vencemos esta! Wow!",bc_map,"0xFFCE00";
 		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
 		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
 	}
@@ -188,7 +190,7 @@ OnMyMobDead:
 
 bat_a02,15,17,3	script	OBJ#bat_a02_b	844,{
 OnEnable:
-	bg_monster $@TierraBG2_id2,"bat_a02",167,50,"Food Depot",1910,"OBJ#bat_a02_b::OnMyMobDead";
+	bg_monster $@TierraBG2_id2,"bat_a02",167,50,"Food Storage",1910,"OBJ#bat_a02_b::OnMyMobDead";
 	end;
 
 OnKill:
@@ -202,7 +204,7 @@ OnMyMobDead:
 		set $@TierraBG2_Victory, 1;
 		enablenpc "Guillaume Vintenar#a02_a";
 		enablenpc "Croix Vintenar#a02_b";
-		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : We destroyed Croix's Food Storage. We won that! Wow!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose: Nós destruímos os Suprimentos dos Croixs. Nós vencemos esta! Wow!",bc_map,"0xFFCE00";
 		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
 		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
 	}
@@ -227,7 +229,7 @@ OnMyMobDead:
 		killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
 		delwall "bat_a02_c1";
 		enablenpc "Guillaume Blacksmith#a02";
-		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : The Barricade in the valley has been destroyed! Where's the Blacksmith? We need to rebuild the Barricade!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose: A Barricada do vale foi destruída! Onde está o nosso Guillaume Blacksmith? Nós precisamos reconstruir a Barricada!",bc_map,"0xFFCE00";
 	}
 	end;
 }
@@ -250,7 +252,7 @@ OnMyMobDead:
 		killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
 		delwall "bat_a02_g1";
 		enablenpc "Croix Blacksmith#bat_a02";
-		mapannounce "bat_a02", "Croix Vintenar Swandery : The Barricade in the valley has been destroyed! Where's the Blacksmith? We need to rebuild the Barricade!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Croix Vintenar Swandery: A Barricada do vale foi destruída! Onde está o nosso Croix Blacksmith? Nós precisamos reconstruir a Barricada!",bc_map,"0xFFCE00";
 	}
 	end;
 }
@@ -269,11 +271,11 @@ OnMyMobDead:
 		bg_team_setxy getcharid(4),56,212;
 		if (getcharid(4) == $@TierraBG2_id1) {
 			donpcevent "NOBJ_mob#bat_a02_a::OnEnable";
-			mapannounce "bat_a02", "Guillaume captured a Neutrality Flag, so they have an advantage.",bc_map,"0xFFCE00";
+			mapannounce "bat_a02", "O time Guillaume capturou a Bandeira Neutra, então eles estão em vantagem.",bc_map,"0xFFCE00";
 		}
 		else {
 			donpcevent "NOBJ_mob#bat_a02_b::OnEnable";
-			mapannounce "bat_a02", "Croix captured a Neutrality Flag, so they have an advantage.",bc_map,"0xFFCE00";
+			mapannounce "bat_a02", "O time Croix capturou a Bandeira Neutra, então eles estão em vantagem.",bc_map,"0xFFCE00";
 		}
 	}
 	end;
@@ -314,15 +316,15 @@ OnMyMobDead:
 bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 	if (getcharid(4) == $@TierraBG2_id1) {
 		mes "[Guillaume Blacksmith]";
-		mes "We are in urgency! The Barricade has been destroyed!";
-		mes "We can repair the Barricade with ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium and 100 Gold.^000000";
-		mes "We have it all except for the 50 Stones!";
+		mes "Nós estamos em uma emergência! A Barricada foi destruída!";
+		mes "Nós podemos reparar a Barricada com ^3131FF50 Pedras, 3 Nervos de Urso, 500 Pedaços de Metal, 30 Minérios de Elunium e 100 Ouro.^000000";
+		mes "E nós temos tudo isso, exceto as 50 Pedras!";
 		next;
-		switch(select("Repair.:Leave it.")) {
+		switch(select("Reparar.:Deixar assim.")) {
 		case 1:
 			if (countitem(7049) > 49) {
 				mes "[Guillaume Blacksmith]";
-				mes "You brought enough stones! Let's go and repair.";
+				mes "Você trouxe pedras o suficiente! Vamos então começar a reparar.";
 				next;
 				mes "..";
 				next;
@@ -339,19 +341,19 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 				mes "..............";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada.";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada.";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte.";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger. Now decorate with Metal Fragments.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte. Agora decorando com os Fragmentos de Metal.";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger. Decorate with Metal Fragments, and plait stones with Sinew of Bear!";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte. Agora decorando com os Fragmentos de Metal, e trançando as pedras com os Nervos de Urso!";
 				next;
 				mes "..............";
 				mes "..............";
@@ -361,8 +363,8 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 				next;
 				specialeffect EF_REPAIRWEAPON;
 				mes "[Guillaume Blacksmith]";
-				mes "Wow! It's done.";
-				mes "We are relieved.";
+				mes "Uau! Está feito.";
+				mes "Estamos mais aliviados agora.";
 				delitem 7049,50; //Stone
 				donpcevent "barricade#bat_a02_a::OnEnable";
 				close2;
@@ -371,22 +373,22 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 			}
 			else {
 				mes "[Guillaume Blacksmith]";
-				mes "You don't have enough Stones!";
+				mes "Você não possui pedras o suficiente!";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "^3131FFWe need 50 Stones.^000000";
-				mes "We are busy, so please hurry.";
+				mes "^3131FFNós precisamos de 50 Pedras.^000000";
+				mes "Estamos ocupados, então vá mais depressa.";
 				close;
 			}
 		case 2:
 			mes "[Guillaume Blacksmith]";
-			mes "There are enemies coming! Let's evacuate from here!";
+			mes "Os inimigos estão chegando! Vamos evacuar e partir daqui!";
 			close;
 		}
 	}
 	else {
 		mes "[Guillaume Blacksmith]";
-		mes "There the enemy is coming!";
+		mes "Lá, o inimigo está chegando!";
 		close;
 	}
 
@@ -398,15 +400,15 @@ OnInit:
 bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 	if (getcharid(4) == $@TierraBG2_id2) {
 		mes "[Croix Blacksmith]";
-		mes "We are in urgency! The Barricade has been destroyed!";
-		mes "We can repair the Barricade with ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium and 100 Gold.^000000";
-		mes "We have it all except for the 50 Stones!";
+		mes "Nós estamos em uma emergência! A Barricada foi destruída!";
+		mes "Nós podemos reparar a Barricada com ^3131FF50 Pedras, 3 Nervos de Urso, 500 Pedaços de Metal, 30 Minérios de Elunium e 100 Ouro.^000000";
+		mes "E nós temos tudo isso, exceto as 50 Pedras!";
 		next;
-		switch(select("Repair.:Leave it.")) {
+		switch(select("Reparar.:Deixar assim.")) {
 		case 1:
 			if (countitem(7049) > 49) {
 				mes "[Croix Blacksmith]";
-				mes "You brought enough stones! Let's go and repair.";
+				mes "Você trouxe pedras o suficiente! Vamos então começar a reparar.";
 				next;
 				mes "..";
 				next;
@@ -423,19 +425,19 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 				mes "..............";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada.";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada.";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte.";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger. Now decorate with Metal Fragments.";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte. Agora decorando com os Fragmentos de Metal.";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "Combine Stones and Gold in the proper percentage and shape the Barricade, then add Rough Elunium to make it stronger. Decorate with Metal Fragments, and plait stones with Sinew of Bear!";
+				mes "Combinando as Pedras e o Ouro na porcentagem adequada e afiando a Barricada, e então adicionando os Minérios de Elunium para deixá-la mais forte. Agora decorando com os Fragmentos de Metal, e trançando as pedras com os Nervos de Urso!";
 				next;
 				mes "..............";
 				mes "..............";
@@ -445,8 +447,8 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 				next;
 				specialeffect EF_REPAIRWEAPON;
 				mes "[Croix Blacksmith]";
-				mes "Wow! It's done.";
-				mes "We are relieved.";
+				mes "Uau! Está feito.";
+				mes "Estamos mais aliviados agora.";
 				delitem 7049,50; //Stone
 				donpcevent "barricade#bat_a02_b::OnEnable";
 				close2;
@@ -455,22 +457,22 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 			}
 			else {
 				mes "[Croix Blacksmith]";
-				mes "You don't have enough Stones!";
+				mes "Você não possui pedras o suficiente!";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "^3131FFWe need 50 Stone.^000000";
-				mes "We are busy, so please hurry.";
+				mes "^3131FFNós precisamos de 50 Pedras.^000000";
+				mes "Estamos ocupados, então vá mais depressa.";
 				close;
 			}
 		case 2:
 			mes "[Croix Blacksmith]";
-			mes "There are enemies coming! Let's evacuate from here!";
+			mes "Os inimigos estão chegando! Vamos evacuar e partir daqui!";
 			close;
 		}
 	}
 	else {
 		mes "[Croix Blacksmith]";
-		mes "There, the enemy is coming!";
+		mes "Lá, o inimigo está chegando";
 		close;
 	}
 
@@ -482,9 +484,9 @@ OnInit:
 bat_a02,53,377,3	script	Battle Therapist#a02_a	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "Just close your eyes,";
-	mes "and take a deep breath.";
-	mes "You can be free from pain.";
+	mes "Agora feche o seus olhos";
+	mes "e respire bem fundo.";
+	mes "Você pode se libertar da dor agora.";
 	close;
 	end;
 
@@ -532,9 +534,9 @@ OnTouch_:
 bat_a02,45,19,3	script	Battle Therapist#a02_b	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "Just close your eyes,";
-	mes "and take a deep breath.";
-	mes "You can be free from pain.";
+	mes "Agora feche o seus olhos";
+	mes "e respire bem fundo.";
+	mes "Você pode se libertar da dor agora.";
 	close;
 	end;
 
@@ -579,9 +581,9 @@ OnTouch:
 	end;
 }
 
-bat_a02,60,216,3	script	Valley Ghost#bat_a02_n	950,{
+bat_a02,60,216,3	script	Fantasma do Vale#bat_a02_n	950,{
 	specialeffect2 EF_HEAL;
-	mes "[Valley Ghost]";
+	mes "[Fantasma do Vale]";
 	mes "Boo...Boo...";
 	close;
 
@@ -604,7 +606,7 @@ OnTimer26000:
 	end;
 
 OnTimer26500:
-	donpcevent "Valley Ghost#bat_a02_n::OnEnable";
+	donpcevent "Fantasma do Vale#bat_a02_n::OnEnable";
 	end;
 }
 
@@ -628,7 +630,7 @@ OnTouch:
 
 bat_a02,194,265,0	script	barri_warp_down#bat_a02a	-1,7,0,{
 OnTouch:
-	if (getcharid(4) == $@TierraBG2_id1) 
+	if (getcharid(4) == $@TierraBG2_id1)
 		warp "bat_a02",194,270;
 	end;
 }
@@ -742,31 +744,31 @@ OnStop:
 	end;
 
 OnTimer7000:
-	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : Let's attack to burn down Croix's Food Depot!",bc_map,"0xFF9900";
+	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose: Vamos atacar e incinerar todo os Suprimentos do Croix!",bc_map,"0xFF9900";
 	end;
 
 OnTimer8000:
-	mapannounce "bat_a02", "Croix Vintenar Swandery : Master of Valhalla! Let us be gifted with unfailing faith and courage!",bc_map,"0xFF99CC";
+	mapannounce "bat_a02", "Croix Vintenar Swandery: Mestres de Valhalla! Presenteie-nos com coragem e uma fé infalível!",bc_map,"0xFF99CC";
 	end;
 
 OnTimer1800000:
-	mapannounce "bat_a02", "Marollo VII : Guillaume Marollo, Croix Marollo! Marollo followers!",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII: Guillaume Marollo, Croix Marollo! E todos os seus seguidores!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1803000:
-	mapannounce "bat_a02", "Marollo VII : Both camps are competitive, so no camp would be destroyed easily. That means the Marollo kingdoms will never be defeated!",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII: Ambos exércitos são muito competitivos, então nenhum acampamento deverá ser destruído facilmente. Isto significa que os Reinos de Marollo nunca serão derrotados!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1808000:
-	mapannounce "bat_a02", "Marollo VII : I think we'd better terminate the battle, and call it a draw.",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII: Acho que seria melhor encerrarmos a batalha, e chamarmos isto de um empate. Porém...",bc_map,"0x99CC00";
 	end;
 
 OnTimer1822000:
-	mapannounce "bat_a02", "Marollo VII : Hold your royalty and faith for a moment, and let's settle up the battle of Tierra Gorge.",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII: Mantenha a sua lealdade e fé por um momento, e vamos resolver a batalha pelo Desfiladeiro de Tierra.",bc_map,"0x99CC00";
 	end;
 
 OnTimer1825000:
-	mapannounce "bat_a02", "Axl Rose, Swandery : Yes sir.",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Axl Rose, Swandery: Sim, senhor.",bc_map,"0x99CC00";
 	end;
 
 OnTimer1830000:
@@ -777,12 +779,12 @@ OnTimer1830000:
 
 /*
 bat_a02,351,75,3	script	Croix Camp Soldier#bat_a02_guide	934,{
-	mes "Loading...";
+	mes "Carregando...";
 	close;
 }
 
 bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
-	mes "Loading...";
+	mes "Carregando...";
 	close;
 }
 */
@@ -790,21 +792,21 @@ bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
 bat_a02,1,1,3	script	Release all#a02	81,{
 	set .@i, callfunc("F_GM_NPC",1854,0);
 	if (.@i == -1) {
-		mes "Cancelled.";
+		mes "Cancelado.";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "May I help you?";
+		mes "Eu posso te ajudar?";
 		next;
-		switch(select("Release all.:Cancel.")) {
+		switch(select("Libertar todos.:Cancelar.")) {
 		case 1:
-			mes "Bye.";
+			mes "Adeus.";
 			close2;
 			mapwarp "bat_a02","bat_room",154,150;
 			end;
 		case 2:
-			mes "Cancelled.";
+			mes "Cancelado.";
 			close;
 		}
 	}

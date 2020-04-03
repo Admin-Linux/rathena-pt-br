@@ -71,7 +71,7 @@ bat_room,167,178,5	script	Guillaume Knight#kvm	417,{
 		else {
 			mes "Os aplicativos ainda não estão disponíveis.";
 			mes "Para se inscrever, você precisa ir a um Oficial Mercenário da KVM.";
-   
+		}
 		close;
 	case 2:
 		mes "[Guillaume Knight]";
@@ -122,7 +122,7 @@ bat_room,167,178,5	script	Guillaume Knight#kvm	417,{
 			next;
 			mes "[Guillaume Knight]";
 			mes "Entretanto, esteja ciente de que, a menos que você esteja no escritório da KVM, ele não poderá entrar em contato com você.";
-   
+		}
 		close;
 	case 4:
 		mes "[Guillaume Knight]";
@@ -189,7 +189,7 @@ bat_room,167,121,1	script	Cavaleiro do Croix#kvm	413,{
 		else {
 			mes "Os aplicativos ainda não estão disponíveis.";
 			mes "Para se inscrever, você precisa ir a um Oficial Mercenário da KVM.";
-   
+		}
 		close;
 	case 2:
 		mes "[Cavaleiro do Croix]";
@@ -240,7 +240,7 @@ bat_room,167,121,1	script	Cavaleiro do Croix#kvm	413,{
 			next;
 			mes "[Croix Knight]";
 			mes "Entretanto, esteja ciente de que, a menos que você esteja no escritório da KVM, ele não poderá entrar em contato com você.";
-   
+		}
 		close;
 	case 4:
 		mes "[Cavaleiro do Croix]";

@@ -152,7 +152,7 @@ OnReadyCheck:
 	if (!getbattleflag("feature.bgqueue")) {
 		donpcevent "Lieutenant Rundel::OnEnterBG";
 		donpcevent "Lieutenant Guerrit::OnEnterBG";
-  
+	}
 	donpcevent "start#bat_a02::OnEnable";
 	bg_warp $@TierraBG2_id1,"bat_a02",352,342;
 	bg_warp $@TierraBG2_id2,"bat_a02",353,52;

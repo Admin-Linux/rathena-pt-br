@@ -108,7 +108,7 @@ OnReadyCheck:
 	if (!getbattleflag("feature.bgqueue")) {
 		donpcevent "Lieutenant Ator::OnEnterBG";
 		donpcevent "Lieutenant Thelokus::OnEnterBG";
-  
+	}
 	donpcevent "OBJ#bat_b01_a::OnKill";
 	donpcevent "OBJ#bat_b01_a::OnEnable";
 	donpcevent "OBJ#bat_b01_b::OnKill";

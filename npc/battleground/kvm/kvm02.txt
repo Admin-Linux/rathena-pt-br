@@ -225,7 +225,7 @@ OnTimer61000:
 			stopnpctimer;
 			donpcevent "KvM02_BG::OnStop";
 			end;
-   
+		}
 	}
 	set $@KvM02BG, 2; // Playing
 	bg_warp $@KvM02BG_id1,"bat_c02",62,119;

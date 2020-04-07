@@ -1,35 +1,36 @@
-//===== rAthena Script =======================================
-//= Alberta Town Renewal
-//===== By: ==================================================
+//===== Script rAthena =======================================
+//= Renovação da cidade de Alberta
+//===== Por: =================================================
 //= Euphy
-//===== Current Version: =====================================
-//= 1.0
-//===== Compatible With: =====================================
-//= rAthena Project
-//===== Description: =========================================
-//= [Official Conversion]
-//= Alberta town NPCs.
-//===== Additional Comments: =================================
-//= 1.0 First Version.
+//===== Versão atual: ========================================
+// 1.0
+//===== Compatível com: ======================================
+//= Projeto rAthena
+//===== Descrição: ===========================================
+//= [Conversão oficial]
+//= NPCs da cidade de Alberta.
+//===== Comentários adicionais: ==============================
+//= 1.0 Primeira versão.
+//= Traduzido por [Admin-Linux]
 //============================================================
 
-// cities/amatsu.txt
+// cidades/amatsu.txt
 //============================================================
 alberta,246,74,3	duplicate(Sea_Captain_amatsu)	Sea Captain#ama1	709
 
-// cities/ayothaya.txt
+// cidades/ayothaya.txt
 //============================================================
 alberta,246,29,3	duplicate(Aibakthing_ayothaya)	Aibakthing#ayo	843
 
-// cities/gonryun.txt
+// cidades/gonryun.txt
 //============================================================
 alberta,246,62,3	duplicate(Kunlun_Envoy_gonryun)	Kunlun Envoy#gon	776
 
-// cities/louyang.txt
+// cidades/louyang.txt
 //============================================================
 alberta,246,40,3	duplicate(Girl_louyang)	Girl#0lou	815
 
-// cities/moscovia.txt
+// cidades/moscovia.txt
 //============================================================
 alberta,246,51,4	duplicate(PR_Officer_moscovia)	Moscovia P.R. Officer#1	960
 

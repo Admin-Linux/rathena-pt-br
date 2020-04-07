@@ -1,78 +1,79 @@
-//===== rAthena Script =======================================
-//= Einbroch Town
-//===== By: ==================================================
-//= Everybody mentioned in the comments
-//===== Current Version: =====================================
+//===== Script rAthena =========================================
+//= Cidade de Einbroch
+//===== Por: ===================================================
+//= Todo mundo mencionado nos comentários
+//===== Versão atual: ==========================================
 //= 1.7
-//===== Compatible With: =====================================
-//= rAthena Project
-//===== Description: =========================================
-//= Einbroch Town Script
-//===== Additional Comments: =================================
-//= 0.2 Added some NPCs [MasterOfMuppets]
-//= 0.3 Added a few npcs by reddozen [MasterOfMuppets]
-//= 0.4 Added a crappy quest, have fun guys... [MasterOfMuppets]
-//= 0.4a Added exp bonus for the factory quest, borrowed from a Korean fansite.
-//= 0.4b Added missing close [Komurka]
-//= 0.5 Added Temporal Locations of Gunslinger Job Change map.
-//=     Info provided by RockmanEXE [erKURITA]
-//= 0.6 Implemented a crap quest [MasterOfMuppets]
-//= 0.7 Implemented an inn NPC [MasterOfMuppets]
-//= 0.8 Implemented the Shinokas quest, thanks to [MasterOfMuppets]
-//=      Dj-Yhn for scripting it.
-//= 0.9 Removed Duplicates [Silent]
-//= 1.0 Implemented the Lover's quest. [MasterOfMuppets]
-//= 1.1 Split quests into quests/cities_einbroch.txt [Evera]
-//= 1.2 Split more quests into above file [Evera]
-//= 1.3 Added (finally) the Garrison quest npc [erKURITA]
-//= 1.4 Implemented the polution script. [MasterOfMuppets]
-//= 1.5 Updated Hotel Employee to work with Airship Ticket Quest [Samuray22]
-//= 1.6 Optimized several NPCs [DZeroX]
-//= 1.7 Replaced outdated variable with getarg. [L0ne_W0lf]
-//= 1.8 Fixed Occurances of PcName. [L0ne_W0lf]
-//============================================================
+//====== Compatível com: =======================================
+//= Projeto rAthena
+//====== Descrição: ============================================
+//== Script da cidade de Einbroch
+//====== Comentários adicionais: ===============================
+//== 0.2 Adicionado alguns NPCs [MasterOfMuppets]
+//= 0.3 Adicionado alguns npcs por reddozen [MasterOfMuppets]
+//= 0.4 Adicionada uma missão de baixa qualidade, divirta-se ... [MasterOfMuppets]
+//= 0.4a Adicionado bônus de exp para a missão da fábrica, emprestado de um site de fãs coreano.
+//= 0.4b Adicionado ausente em falta [Komurka]
+//= 0,5 Adicionado locais temporais do mapa de mudança de emprego do Gunslinger.
+//= Informações fornecidas pelo RockmanEXE [erKURITA]
+//= 0.6 Implementou uma missão porcaria [MasterOfMuppets]
+//= 0.7 Implementou um NPC de pousada [MasterOfMuppets]
+//= 0.8 Implementada a missão Shinokas, graças a [MasterOfMuppets]
+//= Dj-Yhn para scripts.
+//= 0,9 Duplicatas removidas [Silencioso]
+//= 1.0 Implementada a missão do Amante. [MasterOfMuppets]
+//= 1.1 Dividir missões em quests / cities_einbroch.txt [Evera]
+//= 1.2 Divide mais missões no arquivo acima [Evera]
+//= 1.3 Adicionada (finalmente) a missão Garrison npc [erKURITA]
+//= 1.4 Implementado o script de poluição. [MasterOfMuppets]
+//= 1,5 Funcionário do hotel atualizado para trabalhar com a Quest de bilhetes de dirigível [Samuray22]
+//= 1.6 NPCs otimizados [DZeroX]
+//= 1.7 Variável desatualizada substituída por getarg. [L0ne_W0lf]
+//= 1.8 Ocorrências corrigidas de PcName. [L0ne_W0lf]
+//= Traduzido por [Admin-Linux]
+//==============================================================
 
 einbroch,218,198,5	script	Mark#ein	855,{
 	.@npc_name$ = strnpcinfo(1);
 	mes "["+ .@npc_name$ +"]";
-	mes "Good day~";
-	mes "I'm "+ .@npc_name$ +", your";
-	mes "guide to exploring";
-	mes "the Einbroch Tower.";
+	mes "Bom dia ~";
+	mes "eu sou"+.@npc_name$ +", seu";
+	mes "guia para explorar";
+	mes "a Torre Einbroch.";
 	next;
 	mes "["+ .@npc_name$ +"]";
-	mes "Einbroch Tower offers";
-	mes "the best view of our city";
-	mes "and it's a great place to";
-	mes "meet with friends or take";
-	mes "a date. The Einbroch Tower";
-	mes "admission fee is 10 zeny.";
+	mes "Torre Einbroch oferece";
+	mes "a melhor vista da nossa cidade";
+	mes "e é um ótimo lugar para";
+	mes "encontrar-se com amigos ou levar";
+	mes "um encontro. A Torre Einbroch";
+	mes "taxa de admissão é de 10 zeny.";
 	next;
 	mes "["+ .@npc_name$ +"]";
-	mes "Right now, we're offering";
-	mes "a special promotion called";
-	mes "the Apple Combo Set for only";
-	mes "20 zeny. This set includes";
-	mes "Einbroch Tower admission";
-	mes "and an Apple to snack on.";
+	mes "No momento, estamos oferecendo";
+	mes "uma promoção especial chamada";
+	mes "o Apple Combo Set por apenas";
+	mes "20 zeny. Este conjunto inclui";
+	mes "admissão na Torre Einbroch";
+	mes "e uma maçã para comer.";
 	next;
-	switch(select("Tower Admission Only:Apple Combo Set:Cancel")) {
+	switch(select("Somente entrada na torre: Apple Combo Set: Cancelar")) {
 	case 1:
 		if (Zeny < 10) {
 			mes "["+ .@npc_name$ +"]";
-			mes "I'm sorry, but you";
-			mes "don't have enough";
-			mes "zeny. The Einbroch";
-			mes "Tower Admission";
+			mes "me desculpe, mas você";
+			mes "não tem o suficiente";
+			mes "zeny. O Einbroch";
+			mes "Admissão na Torre";
 			mes "fee is 10 zeny.";
 			close;
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
-			mes "Thank you for";
-			mes "using our services.";
-			mes "Let me guide you to";
-			mes "the tower right away.";
+			mes "Obrigado por";
+			mes "usando nossos serviços.";
+			mes "Deixe-me guiá-lo para";
+			mes "a torre imediatamente.";
 			set Zeny, Zeny-10;
 			close2;
 			warp "einbroch",181,196;
@@ -88,18 +89,18 @@ einbroch,218,198,5	script	Mark#ein	855,{
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
-			mes "Before I guide you to";
-			mes "the tower, let me check";
-			mes "your status to insure";
-			mes "your safety before I give";
-			mes "you the Apple Combo Set.";
+			mes "Antes de eu guiar você";
+			mes "a torre, deixe-me checar";
+			mes "seu status para garantir";
+			mes "sua segurança antes que eu dê";
+			mes "você é o Apple Combo Set.";
 			next;
 			if (checkweight(512,1)) {
 				mes "["+ .@npc_name$ +"]";
-				mes "Thank you for";
-				mes "using our services.";
-				mes "Let me guide you to";
-				mes "the tower right away.";
+				mes "Obrigado por";
+				mes "usando nossos serviços.";
+				mes "Deixe-me guiá-lo para";
+				mes "a torre imediatamente.";
 				set Zeny, Zeny-20;
 				getitem 512,1; //Apple
 				close2;
@@ -108,44 +109,44 @@ einbroch,218,198,5	script	Mark#ein	855,{
 			}
 			else {
 				mes "["+ .@npc_name$ +"]";
-				mes "I'm sorry, but you're carrying";
-				mes "too many items with you. Please store some of your things in your Kafra Storage before purchasing";
-				mes "the Apple Combo Set.";
+				mes "me desculpe, mas você está carregando";
+				mes "muitos itens com você. Guarde algumas de suas coisas no seu Kafra Storage antes de comprar";
+				mes "o Apple Combo Set.";
 				close;
 			}
 		}
 	case 3:
 		mes "["+ .@npc_name$ +"]";
-		mes "I see.";
-		mes "Feel free to";
-		mes "come back any";
-		mes "time. Thank you.";
+		mes "Entendo.";
+		mes "Sinta-se livre para";
+		mes "volte qualquer";
+		mes "tempo. Obrigado.";
 		close;
 	}
 }
 
 einbroch,175,196,5	script	Morei#ein	854,{
 	mes "[Morei]";
-	mes "Greetings,";
-	mes "I am Morei,";
-	mes "Assistant Guide";
-	mes "of Einbroch Tower.";
+	mes "Saudações";
+	mes "eu sou Morei";
+	mes "Guia do Assistente";
+	mes "da Torre Einbroch.";
 	next;
 	mes "[Morei]";
-	mes "If you wish to return";
-	mes "to the ground floor,";
-	mes "please let me know.";
-	mes "Would you like to go";
-	mes "back to ground level?";
+	mes "Se você deseja retornar";
+	mes "até o térreo";
+	mes "por favor me avise.";
+	mes "Você gostaria de ir";
+	mes "de volta ao nível do solo?";
 	next;
 	switch(select("Yes.:No.")) {
 	case 1:
 		mes "[Morei]";
-		mes "I see.";
-		mes "Let me lead you";
-		mes "to the ground floor.";
-		mes "Thank you for using";
-		mes "our services.";
+		mes "Entendo.";
+		mes "Deixe-me levá-lo";
+		mes "até o térreo.";
+		mes "Obrigado por usar";
+		mes "nossos serviços.";
 		close2;
 		switch(rand(1,3)) {
 		case 1:
@@ -160,10 +161,10 @@ einbroch,175,196,5	script	Morei#ein	854,{
 		}
 	case 2:
 		mes "[Morei]";
-		mes "I see.";
-		mes "I hope you";
-		mes "enjoy your time";
-		mes "in Einbroch Tower.";
+		mes "Entendo.";
+		mes "eu espero que você";
+		mes "aproveite seu tempo";
+		mes "na Torre Einbroch.";
 		close;
 	}
 }
@@ -173,27 +174,27 @@ einbroch,176,172,5	duplicate(Mark#ein)	Khemko#ein	855
 
 einbroch,232,272,3	script	Train Station Staff#ein1::EinbrochTrain	852,{
 	mes "[Staff]";
-	mes "Welcome to";
-	mes "the Train Station.";
-	mes "Trains to Einbech";
-	mes "are always running";
-	mes "so if you miss one,";
-	mes "it's no problem.";
+	mes "Bem-vindo a";
+	mes "a estação de trem.";
+	mes "Trens para Einbech";
+	mes "estão sempre rodando";
+	mes "então se você sente falta de um,";
+	mes "não tem problema.";
 	next;
 	mes "[Staff]";
-	mes "The fare to board the";
-	mes "train that runs the Einbroch";
-	mes "to Einbech line is 200 zeny.";
-	mes "Would you like to buy a ticket?";
+	mes "A tarifa para embarcar no";
+	mes "trem que percorre o Einbroch";
+	mes "para a linha Einbech é 200 zeny.";
+	mes "Você gostaria de comprar um ingresso?";
 	next;
-	switch(select("Yes.:No.:About the Environment...")) {
+	switch(select("Sim.:Não.:Sobre o meio ambiente...")) {
 	case 1:
 		if (Zeny > 199) {
 			mes "[Staff]";
-			mes "Thank you";
-			mes "very much.";
-			mes "Have a safe trip.";
-			mes "^333333*Ahem*^000000 All aboard!";
+			mes "Obrigado";
+			mes "muito.";
+			mes "Tenha uma boa viagem.";
+			mes "^333333*Ahem*^000000 Todos a bordo!";
 			close2;
 			set Zeny, Zeny-200;
 			warp "einbech",43,215;
@@ -201,31 +202,31 @@ einbroch,232,272,3	script	Train Station Staff#ein1::EinbrochTrain	852,{
 		}
 		else {
 			mes "[Staff]";
-			mes "I'm sorry, but this";
-			mes "isn't enough zeny";
-			mes "to pay the train fare.";
+			mes "me desculpe, mas isso";
+			mes "não é suficiente zeny";
+			mes "para pagar a tarifa do trem.";
 			close;
 		}
 	case 2:
 		mes "[Staff]";
-		mes "Very well, then.";
-		mes "Please enjoy your";
-		mes "stay in Einbroch.";
+		mes "Muito bem, então.";
+		mes "Por favor, aproveite o seu";
+		mes "fique em Einbroch.";
 		close;
 	case 3:
 		mes "[Staff]";
-		mes "Einbroch is infamous for";
-		mes "its air pollution, no doubt";
-		mes "caused by the industrial";
-		mes "facilities located here.";
-		mes "It's really horrible...";
+		mes "Einbroch é famoso por";
+		mes "sua poluição do ar, sem dúvida";
+		mes "causado pelo industrial";
+		mes "instalações localizadas aqui.";
+		mes "É realmente horrível ...";
 		next;
 		mes "[Staff]";
-		mes "Sometimes the air pollution";
-		mes "gets so bad that it becomes";
-		mes "hard to breathe. If you hear";
-		mes "the Einbroch Smog Alert, you";
-		mes "should find shelter immediately!";
+		mes "Às vezes a poluição do ar";
+		mes "fica tão ruim que se torna";
+		mes "difícil respirar. Se você ouvir";
+		mes "o Alerta de Poluição Atmosférica de Einbroch, você";
+		mes "deve encontrar abrigo imediatamente!";
 		close;
 	}
 }
@@ -234,286 +235,286 @@ einbroch,252,301,3	duplicate(EinbrochTrain)	Train Station Staff#ein2	852
 
 einbroch,259,326,3	script	Leslie#ein_1	846,{
 	mes "[Leslie]";
-	mes "^666666*Cough cough!*^000000";
-	mes "Laaaand sakes!";
+	mes "^ 666666 * Tosse! * ^ 000000";
+	mes "Laaa e amor!";
 	next;
 	mes "[Leslie]";
-	mes "An old woman like me";
-	mes "can't breathe this air! How";
-	mes "do people even live in all this";
-	mes "smog? Sure, the air in Einbech";
-	mes "isn't pristine, but the air here in Einbroch is much worse! ^333333*Cough~!*^000000";
+	mes "Uma velha como eu";
+	mes "não consigo respirar esse ar! Como";
+	mes "as pessoas ainda vivem tudo isso";
+	mes "poluição atmosférica? Claro, o ar em Einbech";
+	mes "não é puro, mas o ar aqui em Einbroch é muito pior!^333333*Tosse~!*^000000";
 	next;
 	mes "[Leslie]";
-	mes "I hate coming here";
-	mes "sometimes! The air is";
-	mes "totally polluted and this";
-	mes "city is full of stuck up";
-	mes "pricks! But they sell stuff";
-	mes "here I can't buy back home...";
+	mes "Eu odeio vir aqui";
+	mes "às vezes! O ar está";
+	mes "totalmente poluído e isso";
+	mes "a cidade está cheia de";
+	mes "idiotas! Mas eles vendem coisas";
+	mes "aqui não posso comprar em casa ...";
 	close;
 }
 
 einbroch,236,191,3	script	Tan#ein	855,{
 	mes "[Tan]";
-	mes "All the factories";
-	mes "here in Einbroch are";
-	mes "causing a serious air";
-	mes "pollution problem.";
+	mes "Todas as fábricas";
+	mes "aqui em Einbroch são";
+	mes "causando um ar sério";
+	mes "problema de poluição.";
 	next;
 	mes "[Tan]";
-	mes "I'm an Airship engineer and";
-	mes "everyday, all day long, I deal";
-	mes "with oil stains and all sorts";
-	mes "of pollutants. I'm surprised";
-	mes "I haven't gotten sick yet...";
+	mes "Eu sou engenheiro de dirigível e";
+	mes "todos os dias, durante todo o dia, eu trato";
+	mes "com manchas de óleo e todos os tipos";
+	mes "de poluentes. Estou surpreso";
+	mes "Eu ainda não fiquei doente ...";
 	next;
 	mes "[Tan]";
-	mes "Still, I try to be careful";
-	mes "when I can. Whenever I go";
-	mes "out into the city's red fog,";
-	mes "I always wear my Flu Mask.";
-	mes "If you'll be here for a while,";
-	mes "you should carry one with you.";
+	mes "Ainda assim, eu tento tomar cuidado";
+	mes "quando posso. Sempre que vou";
+	mes "no nevoeiro vermelho da cidade";
+	mes "Eu sempre uso minha máscara de gripe.";
+	mes "Se você ficar aqui por um tempo,";
+	mes "você deveria levar um com você.";
 	close;
 }
 
 einbroch,228,121,5	script	Little Toby#ein-1	855,{
 	mes "[Little Toby]";
-	mes "Excuse me...";
-	mes "But I'm lost!";
-	mes "I can't find my";
-	mes "mom or dad!";
+	mes "Com licença ...";
+	mes "Mas eu estou perdido!";
+	mes "Não consigo encontrar o meu";
+	mes "mãe ou pai!";
 	next;
 	mes "[Little Toby]";
-	mes "A-am I at the Airport?!";
-	mes "My parents are supposed";
-	mes "to come get me, but I still";
-	mes "haven't found them! We just";
-	mes "moved here, so I don't know";
-	mes "where anything is!";
+	mes "Estou no aeroporto ?!";
+	mes "Meus pais deveriam";
+	mes "vir me pegar, mas eu ainda";
+	mes "não os encontrei! Nós apenas";
+	mes "se mudou para cá, então eu não sei";
+	mes "onde quer que esteja!";
 	next;
 	mes "[Little Toby]";
-	mes "W-wait!";
-	mes "Where are you";
-	mes "going?! Don't leave";
-	mes "me, I'm all alone...!";
+	mes "Espere!";
+	mes "onde você está";
+	mes "indo ?! Não vá embora";
+	mes "eu estou sozinho ...!";
 	close;
 }
 
 einbroch,40,116,1	script	Airship Engineer#ein-1	855,{
 	mes "[Airship Engineer]";
-	mes "H-hey! Don't";
-	mes "touch my precious";
-	mes "Burielle! I just finished";
-	mes "her tune-up and now she's";
-	mes "sleeping! J-just step away!";
+	mes "E-ei! Não";
+	mes "toque meu precioso";
+	mes "Burielle! Acabei de terminar";
+	mes "o ajuste dela e agora ela";
+	mes "dormindo! J-apenas se afaste!";
 	next;
-	switch(select("Who's Burielle?:Sorry about That.")) {
+	switch(select("Quem é Burielle?:Desculpe por isso.")) {
 	case 1:
 		mes "[Airship Engineer]";
-		mes "Burielle is the prettiest";
-		mes "model among all the Airships";
-		mes "made within the last ten years!";
-		mes "She might be grounded now, but";
-		mes "with my healing hands, she'll";
-		mes "conquer the skies again!";
+		mes "Burielle é a mais bonita";
+		mes "modelo entre todas as aeronaves";
+		mes "feito nos últimos dez anos!";
+		mes "Ela pode estar de castigo agora, mas";
+		mes "com minhas mãos curadoras, ela";
+		mes "conquistar os céus de novo!";
 		next;
 		switch(select("Ah~:Uh huh...")) {
 		case 1:
 			mes "["+strcharinfo(0)+"]";
-			mes "Ah~";
-			mes "I see, so you're";
-			mes "working on restoring";
-			mes "this magnificent specimen";
-			mes "of an Airship. Best of luck~";
+			mes "Ah ~";
+			mes "Entendo, então você é";
+			mes "trabalhando na restauração";
+			mes "este espécime magnífico";
+			mes "de um dirigível. Boa sorte ~";
 			next;
-			mes "[Airship Engineer]";
-			mes "Yeah. I'd appreciate";
-			mes "it if you'd just be careful.";
-			mes "I've put a lot of love into";
-			mes "fixing up Burielle...";
+			mes "[Engenheiro de Dirigível]";
+			mes "Sim. Eu apreciaria";
+			mes "se você apenas tomar cuidado.";
+			mes "Eu coloquei muito amor";
+			mes "consertando Burielle ...";
 			close;
 		case 2:
 			mes "["+strcharinfo(0)+"]";
-			mes "Uh huh...";
-			mes "Right. For a second";
-			mes "there, I thought you were";
-			mes "talking about a person, but";
-			mes "then I also assumed that you";
-			mes "weren't, you know, a nutcase.";
+			mes "Uh huh ...";
+			mes "Certo. Por um segundo";
+			mes "lá, eu pensei que você estivesse";
+			mes "falando de uma pessoa, mas";
+			mes "então eu também assumi que você";
+			mes "você não era um maluco.";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Oh, did you say,";
-			mes "''prettiest model?''";
-			mes "All Airships look the";
-			mes "same to me, this one";
-			mes "ain't special at all. You've";
-			mes "gone loony tunes, paley boy.";
+			mes "Oh, você disse";
+			mes "'' modelo mais bonito? ''";
+			mes "Todas as aeronaves parecem";
+			mes "o mesmo para mim, este";
+			mes "não é nada especial. Você";
+			mes "melodias malucas, garoto pálido.";
 			next;
 			emotion ET_FRET;
 			mes "[Airship Engineer]";
-			mes "Wh-what...?!";
+			mes "Oo que ...?!";
 			close;
 		}
 	case 2:
 		mes "[Airship Engineer]";
-		mes "Well, at least you know";
-		mes "what you did wrong. Now";
-		mes "quit disturbing her and git!";
+		mes "Bem, pelo menos você sabe";
+		mes "o que você fez de errado. Agora";
+		mes "pare de incomodá-la e saia!";
 		close;
 	}
 }
 
 einbroch,294,312,3	script	Centzu#ein	854,{
 	mes "[Centzu]";
-	mes "I've lived here for";
-	mes "a long time and I see";
-	mes "that this huge city is still";
-	mes "growing bigger everyday.";
+	mes "morei aqui por";
+	mes "há muito tempo e eu vejo";
+	mes "que esta cidade enorme ainda é";
+	mes "crescendo todos os dias.";
 	next;
 	mes "[Centzu]";
-	mes "How did Einbroch get so";
-	mes "huge so quickly? I still can't";
-	mes "believe there's been this much";
-	mes "development. Well, I suppose";
-	mes "it's not my concern. Nothing";
-	mes "I do will make a difference... ";
+	mes "Como Einbroch ficou tão";
+	mes "enorme tão rapidamente? Eu ainda não posso";
+	mes "acredito que houve tanto";
+	mes "desenvolvimento. Bem, suponho";
+	mes "não é da minha conta. Nada";
+	mes "Eu faço a diferença ...";
 	next;
 	mes "[Centzu]";
-	mes "Even though such";
-	mes "rapid industrialization";
-	mes "can't be good for the";
-	mes "environment or the people,";
-	mes "I'll just sit back, watch what";
-	mes "happens and just enjoy life...";
+	mes "Mesmo assim";
+	mes "industrialização rápida";
+	mes "não pode ser bom para o";
+	mes "ambiente ou as pessoas";
+	mes "Vou me sentar, ver o que";
+	mes "acontece e apenas aproveite a vida ...";
 	close;
 }
 
 einbroch,232,255,5	script	Khowropher#ein	847,{
 	mes "[Khowropher]";
-	mes "^666666*Cough cough*^000000";
-	mes "Jiminy! The air here";
-	mes "is so thick and grimy!";
-	mes "And it's worse for us old";
-	mes "people with breathing";
-	mes "problems! ^333333*Haaack!*^000000";
+	mes "^666666*Tosse com tosse*^000000";
+	mes "Jiminy! O ar aqui";
+	mes "é tão grosso e sujo!";
+	mes "E é pior para nós velhos";
+	mes "pessoas com respiração";
+	mes "problemas! ^333333*Haaack!*^000000";
 	next;
 	mes "[Khowropher]";
-	mes "I don't care if they keep";
-	mes "building more and more";
-	mes "factories and homes in this";
-	mes "town. Still, I'd like to spend";
-	mes "the rest of my life somewhere";
-	mes "quiet and with clean air...";
+	mes "Eu não me importo se eles continuarem";
+	mes "construindo cada vez mais";
+	mes "fábricas e casas nisto";
+	mes "cidade. Ainda assim, eu gostaria de gastar";
+	mes "o resto da minha vida em algum lugar";
+	mes "silencioso e com ar limpo ...";
 	next;
 	mes "[Khowropher]";
-	mes "Then again, Einbroch is my";
-	mes "hometown and I can't just up";
-	mes "and leave. I suppose it's my";
-	mes "fate to suffer from this foul air until the day I die. ^666666*Sigh...*^000000";
+	mes "Einbroch é meu";
+	mes "cidade natal e eu não consigo";
+	mes "e sair. Suponho que seja o meu";
+	mes "o destino de sofrer com esse ar sujo até o dia em que morrer. ^666666*Suspiro ...*^000000";
 	close;
 }
 
 einbroch,143,109,5	script	Khetine#ein	855,{
 	mes "[Khetine]";
-	mes "Lately, there's been";
-	mes "talk about this empty";
-	mes "building downtown that's";
-	mes "been converted into some";
-	mes "sort of mysterious facility.";
+	mes "Ultimamente, tem havido";
+	mes "falar sobre isso vazio";
+	mes "construção no centro da cidade";
+	mes "foi convertido em alguns";
+	mes "uma espécie de instalação misteriosa.";
 	next;
 	mes "[Khetine]";
-	mes "It all seems pretty";
-	mes "shady, but I guess it's";
-	mes "not really my job to know";
-	mes "about that. I mean, if it";
-	mes "doesn't affect me, why";
-	mes "should I be concerned?";
+	mes "Tudo parece bonito";
+	mes "obscuro, mas acho que é";
+	mes "não é realmente o meu trabalho saber";
+	mes "sobre isso. Quero dizer, se";
+	mes "não me afeta, por que";
+	mes "eu deveria me preocupar?";
 	close;
 }
 
 einbroch,229,149,3	script	Sleik#ein	854,{
 	mes "[Sleik]";
-	mes "Surprisingly, we have";
-	mes "a Train Station that everyone";
-	mes "has been calling a victory for";
-	mes "science. I mean, shouldn't we";
-	mes "be more amazed by the Airship?";
+	mes "Surpreendentemente, nós temos";
+	mes "uma estação de trem que todo mundo";
+	mes "tem chamado a vitória por";
+	mes "ciência. Quero dizer, não deveríamos";
+	mes "ficar mais impressionado com o dirigível?";
 	next;
 	mes "[Sleik]";
-	mes "Now, if you want to know";
-	mes "where the train actually goes,";
-	mes "I wouldn't be able to tell you.";
-	mes "After all, I never rode it. But";
-	mes "still, I guess having our own";
-	mes "Train Station is a good thing.";
+	mes "Agora, se você quer saber";
+	mes "para onde o trem realmente vai,";
+	mes "Eu não seria capaz de lhe dizer.";
+	mes "Afinal, eu nunca montei. Mas";
+	mes "ainda, eu acho que ter o nosso";
+	mes "Estação de trem é uma coisa boa.";
 	close;
 }
 
 airport,174,41,6	script	Young Man#air	99,{
 	mes "[Runnan]";
-	mes "...And that's why";
-	mes "I travel around the";
-	mes "globe. My bosses have";
-	mes "a keen eye for the most";
-	mes "exotic goods, so I acquire";
-	mes "them and make deliveries.";
+	mes "... E é por isso";
+	mes "eu viajo pelo";
+	mes "globo. Meus chefes têm";
+	mes "um olhar aguçado para o máximo";
+	mes "mercadorias exóticas, então eu adquiro";
+	mes "e faça entregas.";
 	next;
 	mes "[Runnan]";
-	mes "There even was a time";
-	mes "when they had me collect";
-	mes "Jellopy, though that stuff is";
-	mes "pretty common nowadays.";
-	mes "Now that I think about it, why";
-	mes "did they need so much stuff?";
+	mes "Houve um tempo";
+	mes "quando eles me fizeram colecionar";
+	mes "Jellopy, embora essas coisas sejam";
+	mes "bastante comum hoje em dia.";
+	mes "Agora que penso nisso, por que";
+	mes "eles precisavam de tanta coisa?";
 	close;
 }
 
 airport,176,41,4	script	Old Man#air	88,{
 	mes "[Zhen Lan]";
-	mes "Now, I hear that the";
-	mes "monsters around here";
-	mes "carry around some ore";
-	mes "that dazzles with a sublimely";
-	mes "beautiful light. Neat, huh?";
+	mes "Agora, eu ouvi dizer que";
+	mes "monstros por aqui";
+	mes "carregam algum minério";
+	mes "que deslumbra com um subliminar";
+	mes "luz bonita. Legal, hein?";
 	next;
 	mes "[Zhen Lan]";
-	mes "These ores are a great";
-	mes "material to use in making";
-	mes "flower vases. My friend, who";
-	mes "happens to be a doll maker,";
-	mes "told me that. He makes these dolls using all sorts of materials.";
+	mes "Esses minérios são ótimos";
+	mes "material para usar na fabricação";
+	mes "vasos de flores. Meu amigo, quem";
+	mes "é um fabricante de bonecas,";
+	mes "me disse isso. Ele faz esses bonecos usando todo tipo de material.";
 	next;
 	mes "[Zhen Lan]";
-	mes "He fashions them out of";
-	mes "Well-Tanned Leather, stuffs";
-	mes "them with Bird Feathers, and";
-	mes "uses Cyfar or Zargon to make";
-	mes "the eyes. He even uses a Jellopy at the bottom to balance the doll.";
+	mes "Ele os modifica";
+	mes "Couro Bem Bronzeado, animais";
+	mes "eles com penas de pássaros, e";
+	mes "usa Cyfar ou Zargon para fazer";
+	mes "os olhos. Ele até usa uma gelatina na parte inferior para equilibrar a boneca.";
 	next;
 	mes "[Zhen Lan]";
-	mes "I guess that goes to show";
-	mes "that things that seem useless";
-	mes "might actually be handy in some";
-	mes "way. So don't worry about having too much stuff. Sooner or later, it might be useful to someone.";
+	mes "Eu acho que isso vai mostrar";
+	mes "que coisas que parecem inúteis";
+	mes "pode ??ser útil em alguns";
+	mes "caminho. Então não se preocupe em ter muitas coisas. Cedo ou tarde, isso pode ser útil para alguém.";
 	close;
 }
 
 ein_in01,113,211,3	script	Teinz#ein	851,{
 	mes "[Teinz]";
-	mes "If you just pay me money,";
-	mes "I'll be your slave! There's";
-	mes "nothing I won't do! Anything";
-	mes "is fair game. Hell, I'll get buck naked if you pay me enough.";
+	mes "Se você me pagar,";
+	mes "Eu serei seu escravo! Tem";
+	mes "nada que eu não farei! Qualquer coisa";
+	mes "é um jogo justo. Inferno, ficarei pelado se você me pagar o suficiente.";
 	next;
 	mes "[Teinz]";
-	mes "If you pay me what I'm";
-	mes "worth, I'll work hard at";
-	mes "any task you set me to.";
-	mes "Sure, mining's rough, but";
-	mes "as long as the zeny's coming";
-	mes "in, I'm happy. Heh heh heh~";
+	mes "Se você me pagar o que eu sou";
+	mes "vale a pena trabalhar duro";
+	mes "qualquer tarefa que você me definir.";
+	mes "Claro, a mineração é difícil, mas";
+	mes "desde que o zeny esteja vindo";
+	mes "estou feliz. Heh heh heh ~";
 	close;
 }
 
@@ -528,131 +529,131 @@ ein_in01,48,220,5	script	Lowe#ein	851,{
 	mes ".........";
 	next;
 	mes "[Lowe]";
-	mes "Hey. Why are you";
-	mes "looking at me like";
-	mes "that? There's no idle";
-	mes "chatting allowed at work.";
-	mes "If Canphotii catches";
-	mes "you, you'll be punished...";
+	mes "Ei. Por que você está";
+	mes "olhando para mim como";
+	mes "isso? Não há ociosidade";
+	mes "conversas permitidas no trabalho.";
+	mes "Se Canphotii pegar";
+	mes "você, você será punido ...";
 	next;
 	mes "[Lowe]";
-	mes "Oh wait...";
-	mes "You don't work here.";
-	mes "I apologize, that kind";
-	mes "of reaction's an old";
-	mes "habit for me, adventurer.";
+	mes "Oh, espere ...";
+	mes "Você não trabalha aqui.";
+	mes "Peço desculpas, esse tipo";
+	mes "a reação é antiga";
+	mes "hábito para mim, aventureiro.";
 	close;
 }
 
 ein_in01,87,237,5	script	Dinje#ein	850,{
 	mes "[Dinje]";
-	mes "Do you know why a woman";
-	mes "like me has to work in this";
-	mes "factory? I'll tell you why... ";
+	mes "Você sabe por que uma mulher";
+	mes "como eu tenho que trabalhar nisso";
+	mes "fábrica? Vou lhe dizer por que ...";
 	next;
 	mes "[Dinje]";
-	mes "My lazy husband, Gesin,";
-	mes "is just lying there on the";
-	mes "ground! So I have to work";
-	mes "in order to support us!";
+	mes "Meu marido preguiçoso, Gesin,";
+	mes "está apenas deitado lá no";
+	mes "chão! Então eu tenho que trabalhar";
+	mes "para nos apoiar!";
 	next;
 	mes "[Dinje]";
-	mes "We can't rest for even";
-	mes "a second if we want to save";
-	mes "enough money to become";
-	mes "wealthy and powerful some";
-	mes "day. Don't you understand?";
+	mes "Não podemos descansar nem";
+	mes "um segundo se quisermos salvar";
+	mes "dinheiro suficiente para se tornar";
+	mes "alguns ricos e poderosos";
+	mes "dia. Você não entende?";
 	next;
 	mes "[Dinje]";
-	mes "Well, my husband obviously";
-	mes "doesn't! How can he not know";
-	mes "how the real world works?!";
-	mes "Hey, kick his ass for me if";
-	mes "he doesn't wake up soon!";
+	mes "Bem, meu marido obviamente";
+	mes "não! Como ele pode não saber";
+	mes "como o mundo real funciona ?!";
+	mes "Ei, chute a bunda dele por mim se";
+	mes "ele não acorda logo!";
 	close;
 }
 
 ein_in01,84,218,3	script	Tsuen#ein	851,{
 	mes "[Tsuen]";
-	mes "There was a time";
-	mes "when I dreamed of";
-	mes "being an adventurer,";
-	mes "just like you. But that";
-	mes "was a long time ago...";
+	mes "Houve um tempo";
+	mes "quando eu sonhei";
+	mes "ser aventureiro";
+	mes "como você. Mas isso";
+	mes "faz muito tempo ...";
 	next;
 	mes "[Tsuen]";
-	mes "Now, I'm nothing but";
-	mes "a factory manager. Still,";
-	mes "even if my job's not that";
-	mes "great, I'm pretty satisfied.";
-	mes "I'm sure people enjoy the";
-	mes "products I oversee and all...";
+	mes "Agora, eu não sou nada além de";
+	mes "um gerente de fábrica. Ainda assim";
+	mes "mesmo que meu trabalho não seja esse";
+	mes "ótimo, estou bastante satisfeito.";
+	mes "Tenho certeza que as pessoas gostam do";
+	mes "produtos que eu supervisiono e tudo ...";
 	next;
 	mes "[Tsuen]";
-	mes "Maybe my life was meant";
-	mes "to be this way, even if it's";
-	mes "not how I planned it. But the";
-	mes "time will come when I up and";
-	mes "leave and travel the world";
-	mes "once I get my chance!";
+	mes "Talvez minha vida tenha sido feita";
+	mes "ser assim, mesmo que seja";
+	mes "não como eu planejei. Mas o";
+	mes "chegará a hora em que eu acordar e";
+	mes "sair e viajar pelo mundo";
+	mes "quando eu tiver uma chance!";
 	next;
 	mes "[Tsuen]";
-	mes "I hope the day will";
-	mes "come when I can meet";
-	mes "you out in that big wide";
-	mes "world and greet you as";
-	mes "a fellow adventurer.";
+	mes "Espero que o dia seja";
+	mes "vem quando eu posso encontrar";
+	mes "você nessa grande";
+	mes "mundo e cumprimentá-lo como";
+	mes "um companheiro aventureiro.";
 	close;
 }
 
 ein_in01,103,239,1	script	Gesin#ein	849,{
 	mes "[Gesin]";
 	mes "Arrrgh!";
-	mes "This is killing me!";
-	mes "Why should I be rich?";
-	mes "What's wrong with living";
-	mes "within our means?";
+	mes "Isso está me matando!";
+	mes "Por que eu deveria ser rico?";
+	mes "O que há de errado em viver";
+	mes "dentro de nossos meios?";
 	next;
 	mes "[Gesin]";
-	mes "I've got no problem";
-	mes "with my current way";
-	mes "of life, but the old ball";
-	mes "and chain disagrees.";
-	mes "Why is she so obsessed";
-	mes "with riches and power?";
+	mes "não tenho problema";
+	mes "com meu jeito atual";
+	mes "da vida, mas a velha bola";
+	mes "e a cadeia discorda.";
+	mes "Por que ela está tão obcecada";
+	mes "com riquezas e poder?";
 	next;
 	mes "[Gesin]";
-	mes "Well, in any case, I'd";
-	mes "like to help her, but I can't";
-	mes "get up! I'm exhausted and";
-	mes "my body is just overtaxed.";
-	mes "I have no strength at all.";
+	mes "Bem, de qualquer forma, eu";
+	mes "gostaria de ajudá-la, mas eu não posso";
+	mes "levante-se! Estou exausta e";
+	mes "meu corpo está sobrecarregado.";
+	mes "Eu não tenho força nenhuma.";
 	next;
 	mes "[Gesin]";
-	mes "This is horrible~";
-	mes "I should be resting";
-	mes "instead of worrying";
-	mes "about making money...";
+	mes "Isso é horrível ~";
+	mes "eu deveria estar descansando";
+	mes "em vez de se preocupar";
+	mes "sobre ganhar dinheiro ...";
 	close;
 }
 
 ein_in01,33,275,1	script	Pevtatin#ein	848,{
 	mes "[Pevtatin]";
-	mes "Good god!";
-	mes "I'm so stressed!";
-	mes "It's been nonstop";
-	mes "since I moved here!";
+	mes "Bom Deus!";
+	mes "Estou tão estressado!";
+	mes "Tem sido sem parar";
+	mes "desde que me mudei para cá!";
 	next;
 	mes "[Pevtatin]";
-	mes "The work is tough and";
-	mes "already the boss hates";
-	mes "me! I didn't move here";
-	mes "for this! Still, the pay is";
-	mes "decent so I guess I should";
-	mes "endure just a little longer.";
+	mes "O trabalho é duro e";
+	mes "o chefe já odeia";
+	mes "eu! Eu não me mudei para cá";
+	mes "por isso! Ainda assim, o pagamento é";
+	mes "decente, então acho que deveria";
+	mes "aguentar um pouco mais.";
 	next;
 	mes "[Pevtatin]";
-	mes "Here goes...!";
+	mes "Aqui vai ...!";
 	mes "Yo-heave-ho!";
 	mes "Yo-heave-ho~!";
 	close;
@@ -660,76 +661,76 @@ ein_in01,33,275,1	script	Pevtatin#ein	848,{
 
 ein_in01,36,204,3	script	Rombell#ein	851,{
 	mes "[Rombell]";
-	mes "It's great that the";
-	mes "factory is making good";
-	mes "business and drawing";
-	mes "in a lot of profit, but I still";
-	mes "have one major concern.";
+	mes "É ótimo que o";
+	mes "a fábrica está indo bem";
+	mes "negócios e desenho";
+	mes "com muito lucro, mas eu ainda";
+	mes "tem uma grande preocupação.";
 	next;
 	mes "[Rombell]";
-	mes "The amount of pollution";
-	mes "that this place is causing";
-	mes "is horrific! We've got these";
-	mes "machines blowing out toxic";
-	mes "gas all day long! The air";
-	mes "can't be safe for very long...";
+	mes "A quantidade de poluição";
+	mes "que este lugar está causando";
+	mes "é horrível! Nós temos esses";
+	mes "máquinas explodindo tóxicas";
+	mes "gás o dia todo! O ar";
+	mes "não pode ser seguro por muito tempo ...";
 	next;
 	mes "[Rombell]";
-	mes "I mean, the air we're";
-	mes "breathing right now is";
-	mes "pretty foul and things";
-	mes "are only going to get";
-	mes "worse. How can we";
-	mes "solve this problem?";
+	mes "Quero dizer, o ar que somos";
+	mes "respirar agora é";
+	mes "muita falta e coisas";
+	mes "só vai conseguir";
+	mes "pior. Como podemos";
+	mes "resolver este problema?";
 	close;
 }
 
 ein_in01,64,271,3	script	Vonstein#ein	855,{
 	mes "[Vonstein]";
-	mes "Staring at this";
-	mes "bubbling hot liquid";
-	mes "metal gives me a good";
-	mes "feeling inside. It's like";
-	mes "that stuff can melt anything!";
+	mes "Olhando para isso";
+	mes "líquido quente borbulhante";
+	mes "metal me dá uma boa";
+	mes "sentindo por dentro. É como";
+	mes "essas coisas podem derreter qualquer coisa!";
 	next;
 	mes "[Vonstein]";
-	mes "Imagine covering an";
-	mes "entire street of people";
-	mes "with that stuff! Bwahah--";
-	mes "Oh, I'm sorry if I'm talking";
-	mes "crazy talk! I'm just kidding~";
+	mes "Imagine cobrir um";
+	mes "rua inteira de pessoas";
+	mes "com essas coisas! Bwahah--";
+	mes "Oh, desculpe se estou falando";
+	mes "conversa maluca! Estou só brincando ~";
 	close;
 }
 
 ein_in01,49,202,3	script	Dorf#ein	851,{
 	mes "[Dorf]";
-	mes "Machines are sooo";
-	mes "convenient. Just look";
-	mes "at this contraption easily";
-	mes "do tasks that'd be tough";
-	mes "for me to finish alone.";
+	mes "Máquinas são muuuito";
+	mes "conveniente. Basta olhar";
+	mes "nesta engenhoca facilmente";
+	mes "faça tarefas que seriam difíceis";
+	mes "para eu terminar sozinho.";
 	next;
 	mes "[Dorf]";
-	mes "Now this is what";
-	mes "I call technology!";
-	mes "Sure, it takes effort and";
-	mes "money to make one of";
-	mes "these, but what do I care?";
+	mes "Agora é isso que";
+	mes "Eu chamo de tecnologia!";
+	mes "Claro, é preciso esforço e";
+	mes "dinheiro para fazer um";
+	mes "estes, mas com o que eu me importo?";
 	next;
 	mes "[Dorf]";
-	mes "I've got no problems,";
-	mes "so long as this freaking";
-	mes "thing keeps working the";
-	mes "way I want it to!";
+	mes "não tenho problemas,";
+	mes "contanto que isso";
+	mes "coisa continua funcionando";
+	mes "como eu quero!";
 	close;
 }
 
 ein_in01,68,209,5	script	Khashurantze#ein	852,{
 	mes "[Khashurantze]";
-	mes "I'm sorry, but you need";
-	mes "special authority in order";
-	mes "to enter this place. I'll have";
-	mes "to ask you to leave right now.";
+	mes "me desculpe, mas você precisa";
+	mes "autoridade especial em ordem";
+	mes "para entrar neste lugar. Eu terei";
+	mes "pedir para você sair agora.";
 	close2;
 	warp "einbroch",179,63;
 	end;
@@ -737,94 +738,94 @@ ein_in01,68,209,5	script	Khashurantze#ein	852,{
 
 ein_in01,85,261,3	script	Zherin#ein	851,{
 	mes "[Zherin]";
-	mes "I'm in charge of this";
-	mes "blast furnace which";
-	mes "contains all of this";
-	mes "boiling magma.";
+	mes "eu estou encarregado disso";
+	mes "alto-forno que";
+	mes "contém tudo isso";
+	mes "magma fervente.";
 	next;
 	mes "[Zherin]";
-	mes "Even though it doesn't";
-	mes "require actual labor, this";
-	mes "job is pretty tiring. I've got";
-	mes "to pay careful attention all";
-	mes "the time. It's pretty stressful.";
+	mes "Mesmo que não";
+	mes "requer trabalho de verdade, isso";
+	mes "o trabalho é bem cansativo. Eu tenho";
+	mes "prestar muita atenção a todos";
+	mes "o tempo. É bem estressante.";
 	next;
 	mes "[Zherin]";
-	mes "Still, I'm proud of my job";
-	mes "since I have the responsibility";
-	mes "of ensuring employee safety.";
-	mes "Anyway, don't get too close";
-	mes "to the furnace. It won't do if";
-	mes "you get burned on accident!";
+	mes "Ainda assim, tenho orgulho do meu trabalho";
+	mes "desde que eu tenho a responsabilidade";
+	mes "de garantir a segurança dos funcionários.";
+	mes "Enfim, não chegue muito perto";
+	mes "para o forno. Não serve se";
+	mes "você se queima em acidente!";
 	close;
 }
 
 ein_in01,43,252,3	script	Canphotii#ein	852,{
 	mes "[Canphotii]";
-	mes "Hustle, hustle!";
-	mes "Pick up the pace!";
-	mes "Anyone working too";
-	mes "slowly will be punished!";
+	mes "Apresse-se, apresse-se!";
+	mes "Acelere o ritmo!";
+	mes "Alguém trabalhando também";
+	mes "lentamente será punido!";
 	next;
 	mes "[Canphotii]";
-	mes "Can't you understand";
-	mes "that?! Now go to your";
-	mes "station and get back to";
-	mes "work! Wait, are you even";
-	mes "an employee? If not, then";
-	mes "stop wandering around!";
+	mes "Você não entende";
+	mes "isso ?! Agora vá para o seu";
+	mes "estação e volte para";
+	mes "trabalho! Espere, você está quieto";
+	mes "um funcionário? Se não, então";
+	mes "pare de andar por aí!";
 	next;
 	mes "[Canphotii]";
-	mes "You're not supposed";
-	mes "to be able to get in here!";
-	mes "I can't believe they let you";
-	mes "in! This requires extreme";
-	mes "disciplinary action!";
+	mes "Você não deveria";
+	mes "poder entrar aqui!";
+	mes "Não acredito que eles deixaram você";
+	mes "dentro! Isso requer extremo";
+	mes "ação disciplinar!";
 	close;
 }
 
 ein_in01,206,224,3	script	Hotel Employee#ein	855,{
 	mes "[Hotel Employee]";
-	mes "Good day, welcome to the";
-	mes "Einbroch Hotel. The staff is";
-	mes "always striving to accommodate";
-	mes "our guests with the highest";
-	mes "standards in cleanliness,";
-	mes "service and convenience~";
+	mes "Bom dia, bem-vindo ao";
+	mes "Einbroch Hotel. A equipe é";
+	mes "sempre se esforçando para acomodar";
+	mes "nossos convidados com a mais alta";
+	mes "padrões de limpeza";
+	mes "serviço e conveniência ~";
 	next;
 	if (kain_ticket == 5) {
 		mes "[Hotel Employee]";
-		mes "Are you looking";
-		mes "for Mr. Defru Ark?";
-		mes "Oh right, he did mention";
-		mes "waiting for some package";
-		mes "from the Airport. Now let";
-		mes "me pull up that information...";
+		mes "Você está procurando";
+		mes "para o Sr. Defru Ark?";
+		mes "Ah, certo, ele mencionou";
+		mes "esperando por algum pacote";
+		mes "do aeroporto. Agora vamos";
+		mes "eu puxo essa informação ...";
 		next;
 		mes "[Hotel Employee]";
-		mes "Ah, here we are.";
-		mes "Mr. Defru Ark is";
-		mes "staying in Room 201.";
+		mes "Ah, aqui estamos nós.";
+		mes "Sr. Defru Ark é";
+		mes "ficar no quarto 201.";
 		next;
 	}
 	else {
-		switch(select("Save:Take Rest - 5,000 zeny:Cancel")) {
+		switch(select("Salvar:Descanse - 5.000 zeny:Cancelar")) {
 		case 1:
 			mes "[Hotel Employee]";
-			mes "Your Respawn Point";
-			mes "has been saved here";
-			mes "in the Einbroch Hotel.";
-			mes "Thank you, and please";
-			mes "come again.";
+			mes "Seu Ponto de Respawn";
+			mes "foi salvo aqui";
+			mes "no hotel Einbroch.";
+			mes "Obrigado e por favor";
+			mes "venha de novo.";
 			close2;
 			savepoint "ein_in01",200,224,1,1;
 			end;
 		case 2:
 			if (Zeny > 4999) {
-				mes "[Hotel Employee]";
-				mes "Thank you.";
-				mes "Please enjoy";
-				mes "your rest~";
+				mes "[Funcionário do hotel]";
+				mes "Obrigado.";
+				mes "Por favor, aproveite";
+				mes "seu descanso ~";
 				close2;
 				set Zeny, Zeny-5000;
 				percentheal 100,100;
@@ -832,141 +833,141 @@ ein_in01,206,224,3	script	Hotel Employee#ein	855,{
 				end;
 			}
 			else {
-				mes "[Hotel Employee]";
-				mes "I'm sorry, but the";
-				mes "accommodation fee is";
-				mes "5,000 zeny. Next time,";
-				mes "please make sure that you";
-				mes "bring enough zeny, okay?";
+				mes "[Funcionário do hotel]";
+				mes "me desculpe, mas o";
+				mes "taxa de acomodação é";
+				mes "5.000 zeny. Da próxima vez,";
+				mes "por favor, certifique-se de que você";
+				mes "traga bastante zeny, ok?";
 				close;
 			}
 		case 3:
-			mes "[Hotel Employee]";
-			mes "Thank you and";
-			mes "please come again~";
+			mes "[Funcionário do hotel]";
+			mes "Obrigado e";
+			mes "por favor, venha de novo ~";
 			close;
 		}
 	}
-	mes "[Hotel Employee]";
-	mes "Have a good day.";
+	mes "[Funcionário do hotel]";
+	mes "Tenha um bom dia.";
 	close;
 }
 
 einbroch,244,255,5	script	Bulletin Board#ein1	858,{
-	mes " ";
-	mes " Train Station ";
-	mes " ";
+	mes "";
+	minha "estação de trem";
+	mes "";
 	close;
 }
 
 einbroch,253,203,5	script	Bulletin Board#ein2	858,{
-	mes " ";
-	mes " Hotel ";
-	mes " ";
+	mes "";
+	mes "Hotel";
+	mes "";
 	close;
 }
 
 einbroch,68,206,5	script	Bulletin Board#ein3	858,{
-	mes " ";
-	mes " Airship Airport ";
-	mes " ";
+	mes "";
+	mes "Aeroporto do dirigível";
+	mes "";
 	close;
 }
 
 einbroch,90,84,5	script	Bulletin Board#ein4	858,{
-	mes " ";
-	mes " Laboratory ";
-	mes " ";
+	mes "";
+	mes "Laboratório";
+	mes "";
 	close;
 }
 
 einbroch,101,106,5	script	Bulletin Board#ein5	858,{
-	mes " ";
-	mes " Airship Repair Shop ";
-	mes " ";
+	mes "";
+	mes "Oficina de Reparação de Dirigíveis";
+	mes "";
 	close;
 }
 
 einbroch,220,208,5	script	Bulletin Board#ein6	858,{
-	mes " ";
-	mes " Weapon Shop ";
-	mes " ";
+	mes "";
+	mes "Loja de Armas";
+	mes "";
 	close;
 }
 
 einbroch,132,76,5	script	Bulletin Board#ein7	858,{
-	mes " ";
-	mes " Factory ";
-	mes " ";
+	mes "";
+	mes "Fábrica";
+	mes "";
 	close;
 }
 
 einbroch,152,46,5	script	Bulletin Board#ein11	858,{
-	mes "West - Laboratory, Airship Repair Shop";
-	mes "South - Einbroch Front Gate";
-	mes "North - Airport";
-	mes "Northeast - Train Station, Hotel, Weapon Shop";
+	mes "Oeste - Laboratório, Oficina de Reparação de Dirigíveis";
+	mes "Portão da Frente Sul - Einbroch";
+	mes "Norte - Aeroporto";
+	mes "Nordeste - Estação de Trem, Hotel, Loja de Armas";
 	close;
 }
 
 einbroch,235,141,5	script	Bulletin Board#ein22	858,{
-	mes "Southwest - Airship Repair Shop, Laboratory";
-	mes "Northwest - Airport";
-	mes "North - Weapon Shop, Hotel, Train Station";
+	mes "Sudoeste - Oficina de Reparação de Dirigíveis, Laboratório";
+	mes "Noroeste - Aeroporto";
+	mes "Norte - Loja de Armas, Hotel, Estação de Trem";
 	close;
 }
 
 einbroch,162,256,5	script	Bulletin Board#ein33	858,{
-	mes "East - Train Station";
-	mes "Southeast - Hotel";
-	mes "South - Weapon Shop,Factory";
-	mes "Southwest - Airport, Airship Repair Shop, Laboratory";
+	mes "Leste - Estação Ferroviária";
+	mes "Sudeste - Hotel";
+	mes "Sul - Loja de Armas, Fábrica";
+	mes "Sudoeste - Aeroporto, Oficina de Reparação de Dirigíveis, Laboratório";
 	close;
 }
 
 einbroch,183,174,5	script	Bulletin Board#ein44	858,{
-	mes "East - Weapon Shop, Hotel";
-	mes "South - Factory";
-	mes "Southwest - Airship Repair Shop, Laboratory";
-	mes "Northwest - Airport";
+	mes "Leste - Loja de Armas, Hotel";
+	mes "Sul - Fábrica";
+	mes "Sudoeste - Oficina de Reparação de Dirigíveis, Laboratório";
+	mes "Noroeste - Aeroporto";
 	close;
 }
 
 einbroch,104,202,5	script	Bulletin Board#ein55	858,{
-	mes "Northeast - Train Station";
-	mes "East - Weapon Shop,Hotel";
-	mes "South - Airship Repair Shop, Laboratory";
+	mes "Nordeste - Estação Ferroviária";
+	mes "Leste - Loja de Armas, Hotel";
+	mes "Sul - Oficina de Reparação de Dirigíveis, Laboratório";
 	close;
 }
 
 ein_in01,31,217,3	script	Cendadt#ein	851,{
 	mes "[Cendadt]";
-	mes "This factory has a lot";
-	mes "of things that need fixing,";
-	mes "pronto! I'm amazed that";
-	mes "the place is still operating!";
+	mes "Esta fábrica tem muito";
+	mes "de coisas que precisam ser consertadas";
+	mes "pronto! Estou impressionado com isso";
+	mes "o local ainda está funcionando!";
 	next;
 	mes "[Cendadt]";
-	mes "Lucky for us, I hear that";
-	mes "some altruistic adventurers";
-	mes "have been donating materials";
-	mes "to help keep this factory from";
-	mes "falling apart... Or worse.";
-	mes "But that's just a rumor.";
+	mes "Sorte a nossa, eu ouvi isso";
+	mes "alguns aventureiros altruístas";
+	mes "doaram materiais";
+	mes "para ajudar a manter esta fábrica";
+	mes "desmoronando ... ou pior.";
+	mes "Mas isso é apenas um boato.";
 	next;
 	mes "[Cendadt]";
 	mes "^666666*Sigh*^000000";
-	mes "Even if it is true,";
-	mes "there's nothing no one";
-	mes "here can do. Nobody has";
-	mes "the courage to challenge";
-	mes "the system, you know?";
+	mes "Mesmo que seja verdade,";
+	mes "não há nada que ninguém";
+	mes "aqui pode fazer. Ninguém tem";
+	mes "a coragem de desafiar";
+	mes "o sistema, você sabe?";
 	next;
 	mes "[Cendadt]";
-	mes "I...";
-	mes "I better get";
-	mes "back to work";
-	mes "before I get";
-	mes "in trouble...";
+	mes "eu ...";
+	mes "é melhor eu pegar";
+	mes "de volta ao trabalho";
+	mes "antes que eu chegue";
+	mes "com problemas ...";
 	close;
 }

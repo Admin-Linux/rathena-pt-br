@@ -21707,6 +21707,8 @@ template<typename T, size_t S> bool SkillDatabase::parseNode(std::string nodeNam
 		for (size_t i = 0; i < S; i++)
 			arr[i] = value;
 	} else {
+		uint16 max_level = 0;
+
 		for (const YAML::Node &it : node[nodeName]) {
 			uint16 skill_lv;
 
@@ -21722,7 +21724,39 @@ template<typename T, size_t S> bool SkillDatabase::parseNode(std::string nodeNam
 				continue;
 
 			arr[skill_lv - 1] = value;
+			max_level = max(max_level, skill_lv);
 		}
+		
+		size_t i = max_level, j;
+		
+		//Verifique se há alterações lineares com etapas crescentes até atingirmos metade dos dados adquiridos.
+		for (size_t step = 1; step <= i / 2; step++) {
+			int diff = arr[i - 1] - arr[i - step - 1];
+			
+			for (j = i - 1; j >= step; j--) {
+				if ((arr[j] - arr[j - step]) != diff)
+					break;
+			}
+			
+			if (j >= step) //Sem correspondência, tente o próximo passo.
+				continue;
+				
+			for (; i < MAX_SKILL_LEVEL; i++) { //Aplicar aumento linear
+				arr[i] = arr[i - step] + diff;
+				
+				if (arr[i] < 1 && arr[i - 1] >= 0) { //Verifique se trocamos de + para -, limite a redução para 0 nos casos mencionados.
+					arr[i] = 1;
+					diff = 0;
+					step = 1;
+				}
+			}
+			
+			return true;
+		}
+		
+		//Não é possível determinar a tendência linear, preencha os valores restantes da matriz com o último valor
+		for (; i < S; i++)
+			arr[i] = arr[max_level - 1];
 	}
 
 	return true;

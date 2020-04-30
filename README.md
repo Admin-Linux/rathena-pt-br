@@ -1,6 +1,6 @@
 <img src="branding/logo.png" align="right" height="90" />
 
-# rAthena
+# rAthenaptbr
 [![Build Status](https://travis-ci.org/rathena/rathena.png?branch=master)](https://travis-ci.org/rathena/rathena) [![Build status](https://ci.appveyor.com/api/projects/status/8574b8nlwd57loda/branch/master?svg=true)](https://ci.appveyor.com/project/rAthenaAPI/rathena/branch/master) [![Total alerts](https://img.shields.io/lgtm/alerts/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/alerts/) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/context:cpp) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
 > O rAthena é um projeto colaborativo de desenvolvimento de software que gira em torno da criação de um robusto pacote de servidores MMORPG (MMORPG). Escrito em C, o programa é muito versátil e fornece NPCs, warps e modificações. O projeto é gerenciado em conjunto por um grupo de voluntários localizados em todo o mundo, além de uma enorme comunidade fornecendo controle de qualidade e apoio. rAthena é uma continuação do projeto eAthena.
 

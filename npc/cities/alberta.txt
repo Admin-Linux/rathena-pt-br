@@ -291,7 +291,7 @@ alberta,190,173,4	script	Phelix	4_M_03,{
 	}
 	if (@event_zelopy == 0) {
 		mes "Que diabos você está fazendo aqui?";
-		mes "Não há nada que você possa ganhar de graça neste navio, se você quiser algo, trabalhe para ele !!";";
+		mes "Não há nada que você possa ganhar de graça neste navio, se você quiser algo, trabalhe para ele !!";
 		next;
 		mes "[Phelix]";
 		mes "Hmm, então por que você não me traz 10 geléias e eu darei 1 poção. Como é esse som?";

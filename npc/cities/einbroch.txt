@@ -855,7 +855,7 @@ ein_in01,206,224,3	script	Hotel Employee#ein	855,{
 
 einbroch,244,255,5	script	Bulletin Board#ein1	858,{
 	mes "";
-	minha "estação de trem";
+	mes "estação de trem";
 	mes "";
 	close;
 }

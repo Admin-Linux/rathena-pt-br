@@ -401,7 +401,7 @@ int quest_add(struct map_session_data *sd, int quest_id)
 
 	sd->quest_log[n] = {};
 	sd->quest_log[n].quest_id = qi->id;
-	sd->quest_log[n].time = (uint32)quest_time(qi)
+	sd->quest_log[n].time = (uint32)quest_time(qi);
 	sd->quest_log[n].state = Q_ACTIVE;
 	sd->save_quest = true;
 
@@ -691,7 +691,7 @@ static int quest_reload_check_sub(struct map_session_data *sd, va_list ap)
 	int i, j = 0;
 
 	for (i = 0; i < sd->num_quests; i++) {
-		std::shared_ptr<s_quest_db> iq = quest_search(sd->quest_log[i].quest_id);
+		std::shared_ptr<s_quest_db> qi = quest_search(sd->quest_log[i].quest_id);
 
 		if (!qi) { //Remove no longer existing entries
 			if (sd->quest_log[i].state != Q_COMPLETE) //And inform the client if necessary

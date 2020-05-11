@@ -193,8 +193,8 @@ moro_cav,61,69,3	script	Senior Tracker#a1	4_M_JOB_ASSASSIN,{
 			getitem 6684,1;	// TokenOfHero
 		erasequest 9318;// Pursuing Hiding Morocc
 		setquest 9319;// Pursuing Hiding Morocc Continues
+		ep14_3_mors01 = 1;
 		close;
-
 	}
 }
 
@@ -339,7 +339,7 @@ OnInstanceInit:
 
 	disablenpc instance_npcname("#RZ Event_1");
 	disablenpc instance_npcname("#RZ Event_3");
-
+	
 	disablenpc instance_npcname("Grim Reaper Ankou#RZ Event_2");
 	disablenpc instance_npcname("Grim Reaper Ankou#RZ Event_3");
 	disablenpc instance_npcname("Grim Reaper Ankou#RZ Event_4");
@@ -1341,7 +1341,7 @@ OnTouch:
 	getpartymember getcharid(1), 2, .@account_id;
 
 	for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
-		if (isloggedin(.@account_id[.@i],.@char_id[.@i]) == true)
+		if (isloggedin(.@account_id[.@i],.@char_id[.@i]) == false)
 			continue;
 		if (strcharinfo(3,.@char_id[.@i]) == 'map_rev$) {
 			.@n = (.@index % .@size);
@@ -1366,6 +1366,7 @@ OnTouch:
 1@rev,28,42,0	duplicate(#RZ Move_1)	#RZ Move_14	WARPNPC,10,10
 1@rev,39,42,0	duplicate(#RZ Move_1)	#RZ Move_15	WARPNPC,10,10
 1@rev,39,53,0	duplicate(#RZ Move_1)	#RZ Move_16	WARPNPC,10,10
+
 1@rev,28,125,0	script	#RZ Move_5a	WARPNPC,10,10,{
 	end;
 OnTouch:
@@ -1384,7 +1385,6 @@ OnTouch:
 1@rev,28,42,0	duplicate(#RZ Move_5a)	#RZ Move_14a	WARPNPC,10,10
 1@rev,39,42,0	duplicate(#RZ Move_5a)	#RZ Move_15a	WARPNPC,10,10
 1@rev,39,53,0	duplicate(#RZ Move_5a)	#RZ Move_16a	WARPNPC,10,10
-
 
 1@rev,112,56,3	script	#RZ Move_17a	PORTAL,{
 	mes "Do you want to exit through the portal?";
@@ -1417,6 +1417,7 @@ OnTouch:
 1@rev,28,42,0	duplicate(#RZ Debuff_1)	#RZ Debuff_10	HIDDEN_WARP_NPC,10,10
 1@rev,39,42,0	duplicate(#RZ Debuff_1)	#RZ Debuff_11	HIDDEN_WARP_NPC,10,10
 1@rev,39,53,0	duplicate(#RZ Debuff_1)	#RZ Debuff_12	HIDDEN_WARP_NPC,10,10
+
 
 1@rev,28,53,0	script	#RZ Debuff Recovery_1	HIDDEN_WARP_NPC,10,10,{
 	end;

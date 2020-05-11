@@ -280,7 +280,7 @@ OnRecvCastle:
 		}
 		donpcevent "Agit#"+strnpcinfo(2)+"::OnStartArena";
 		// Disable Kafra Staff...
-		disablenpc "Funcionária Kafra#"+strnpcinfo(2);
+		disablenpc "Kafra Staff#"+strnpcinfo(2);
 		end;
 	}
 	else {

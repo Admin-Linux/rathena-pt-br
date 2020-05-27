@@ -157,6 +157,14 @@ OnCroixDie:
 	}
 	end;
 
+OnGuillaumeActive:
+	warp "bat_c01",61,120;
+	end;
+
+OnCroixActive:
+	warp "bat_c01",138,63;
+	end;
+
 OnStart:
 	disablenpc "KVM Officer#KVM01A";
 	disablenpc "KVM Officer#KVM01B";
@@ -218,7 +226,6 @@ OnTimer61000:
 
 	if (!getbattleflag("feature.bgqueue")) {
 		if (.Guillaume_Count < 5 || .Croix_Count < 5) {
-  
 			set $@KvM01BG_Victory, 3;
 			set $@KvM01BG, 3;
 			mapannounce "bat_c01","Não há jogadores suficientes para começar a batalha",1,0x696969;
@@ -227,6 +234,7 @@ OnTimer61000:
 			end;
 		}
 	}
+	bg_updatescore "bat_c01",.Guillaume_Count,.Croix_Count;
 	set $@KvM01BG, 2; // Playing
 	bg_warp $@KvM01BG_id1,"bat_c01",61,120;
 	bg_warp $@KvM01BG_id2,"bat_c01",138,63;
@@ -295,6 +303,8 @@ OnStop:
 	bg_warp $@KvM01BG_id1,"bat_c01",53,128;
 	bg_warp $@KvM01BG_id2,"bat_c01",146,55;
 	donpcevent "KvM01_BG_Out::OnBegin";
+	if (getbattleflag("feature.bgqueue"))
+		bg_reserve "bat_c01", true;
 	end;
 }
 
@@ -336,7 +346,6 @@ OnTimer60000:
 	disablenpc "KVM Officer#KVM01B";
 	mapwarp "bat_c01","bat_room",154,150;
 	maprespawnguildid "bat_c01",0,3; // Just in case someone else
-	bg_updatescore "bat_c01",5,5;
 	set $@KvM01BG, 0;
 
 OnGuillaumeJoin:
@@ -356,7 +365,7 @@ OnCroixJoin:
 	end;
 }
 
-// Reconpensas
+// Battleground rewards
 //============================================================
 bat_c01,51,130,5	script	KVM Officer#KVM01A	419,{
 	if( $@KvM01BG_Victory ) {

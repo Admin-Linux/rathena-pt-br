@@ -28,10 +28,7 @@
 //= 1.9 Rearranged the time-checks so they no longer use goto. [L0ne_W0lf]
 //=     Removed treasure spawning function calls. (No longer needed)
 //= 2.0 Added WoE Battle Log support for broadcasts. [L0ne_W0lf]
-//= traduzido por [Haikenz]
-//= revisado por [Admin-Linux]
 //============================================================
-
 
 -	script	Agit_Event	-1,{
 	end;
@@ -56,7 +53,7 @@ OnAgitInit:
 	// end time checks
 	if ((gettime(DT_DAYOFWEEK)==TUESDAY) && (gettime(DT_HOUR)==23) ||
 	    (gettime(DT_DAYOFWEEK)==THURSDAY) && (gettime(DT_HOUR)==23) ||
-	    (gettime(DT_DAYOFWEEK)==SATURDAY) && (gettime(DT_HOUR)==18)) {
+	    (gettime(DT_DAYOFWEEK)==SATURDAY) && (gettime(DT_HOUR)==18)) { 
 		if (agitcheck()) {
 			AgitEnd;
 			callsub S_DisplayOwners;
@@ -72,10 +69,10 @@ S_DisplayOwners:
 	setarray .@maps$[15],"prtg_cas01","prtg_cas02","prtg_cas03","prtg_cas04","prtg_cas05";
 	for( set .@i, 0; .@i <= 19; set .@i, .@i+1 ) {
 		if (GetCastleData(.@maps$[.@i],1)) {
-			Announce "O castelo [" + GetCastleName(.@maps$[.@i]) + "] foi conquistado pelo clã [" + GetGuildName(GetCastleData(.@maps$[.@i],1)) + "].",bc_all|bc_woe;
+			Announce "The [" + GetCastleName(.@maps$[.@i]) + "] castle has been conquered by the [" + GetGuildName(GetCastleData(.@maps$[.@i],1)) + "] guild.",bc_all|bc_woe;
 		}
 		else {
-			Announce "O castelo [" + GetCastleName(.@maps$[.@i]) + "] está desocupado.",bc_all|bc_woe;
+			Announce "The [" + GetCastleName(.@maps$[.@i]) + "] castle is currently unoccupied.",bc_all|bc_woe;
 		}
 	}
 	end;

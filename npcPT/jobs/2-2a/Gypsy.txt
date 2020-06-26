@@ -1,0 +1,84 @@
+//===== Script rAthena ==========================================
+//= Trocador de tarefas de classe avançada após as normais do kRO.
+//===== Por: ====================================================
+//= Nana
+//= finalizado, otimizado e testado pelo Lupus
+//===== Versão atual: ===========================================
+//= 1.3
+//===== Compatível com: =========================================
+//= Projeto rAthena
+//===== Descrição: ==============================================
+//= Trocador de tarefas de classe avançada após as normais do kRO.
+//===== Comentários adicionais: =================================
+//= 1.1 Transformado tudo em funções, verificações adicionais, etc. [Lupus]
+//= 1.2 Transformaram números em constantes. [Vicious]
+//= 1.3 Agora salva/restaura todas as habilidades da missão [Lupus]
+//= Traduzido por [Admin-Linux]
+//===============================================================
+
+valkyrie,53,56,3	script	Gypsy#Valkyrie	101,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[Gypsy]";
+			mes "Parabéns.";
+			mes "Honra aos guerreiros!";
+			close;
+		}
+		mes "[Gypsy]";
+		mes "Mover para a esquerda";
+		mes "se mova para a direita ~!";
+		mes "E passo ...!";
+		mes "Dançar pode ser";
+		mes "mais que um hobby.";
+		mes "Para mim, é um modo de vida ~";
+		close;
+	}
+	else if (ADVJOB == Job_Gypsy && Class == Job_Archer_High && JobLevel > 39) {
+		mes "[Gypsy]";
+		mes "A terra de Midgard";
+		mes "precisa de mulheres talentosas";
+		mes "para alterar sutilmente os saldos";
+		mes "na batalha entre o bem";
+		mes "e o mal.";
+		next;
+		mes "[Gypsy]";
+		mes "Você está pronto";
+		mes "para assumir esse papel,";
+		mes "e se tornar um cigano?";
+		next;
+		if (select("No.:Yes.") == 1) {
+			mes "[Gypsy]";
+			mes "Quando estiver pronto,";
+			mes "sinta-se à vontade para voltar.";
+			mes "Honra aos guerreiros!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[Gypsy]";
+			mes "Ainda é possível para você aprender mais habilidades. Por favor, use";
+			mes "todos os seus Pontos de Habilidade restantes antes de retornar para mim.";
+			close;
+		}
+		jobchange Job_Gypsy;
+		set ADVJOB,0;
+		mes "[Gypsy]";
+		mes "Parabéns!";
+		mes "Como cigano, eu sei";
+		mes "que suas performances";
+		mes "balançar os corações de todos";
+		mes "aqueles que estarão assistindo ...";
+		close;
+	}
+	mes "[Gypsy]";
+	mes "Bem-vindo";
+	mes "para Valhalla";
+	mes "o Salão da Honra.";
+	next;
+	mes "[Gypsy]";
+	mes "Por favor, faça";
+	mes "você está confortável";
+	mes "enquanto você estiver aqui.";
+	mes "Honra aos guerreiros!";
+	close;
+}

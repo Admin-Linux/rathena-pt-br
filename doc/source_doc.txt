@@ -98,55 +98,55 @@ For real table names, see 'conf/inter_athena.conf'.
   | Char-serv |
   =============
 
-  Table                 Conteúdo
+  Table                 Contents
   -----                 --------
-  char_db               todas as informações relacionadas a char
-  hotkey_db             teclas de atalho definidas para cada caractere
-  scdata_db             status do caractere na desconexão
-  cart_db               lista de itens no carrinho de cada personagem
-  inventory_db          lista de itens no inventário de cada personagem
-  charlog_db            logs de serviço de char
-  storage_db            lista de itens no armazenamento de cada personagem (Kafra)
-  reg_db                variáveis de caracteres permanentes (ex. ADVJOB)
-  skill_db              banco de dados de habilidades aprendidas
-  interlog_db           logs entre serviços
-  memo_db               banco de dados de caracteres Memo_point
-  guild_db              registro da guilda (nome, mestre, lv, exp, emblema etc.)
-  guild_alliance_db     banco de dados de relações de guildas (aliados, inimigos)
-  guild_castle_db       banco de dados do castelo de propriedade da guilda
-  guild_expulsion_db    registros de expulsão da guilda
-  guild_member_db       títulos e posições dos membros atuais da guilda
-  guild_skill_db        banco de dados de habilidades aprendidas da guilda
-  guild_position_db     configuração de posições da guilda (nomes, impostos, direitos)
-  guild_storage_db      armazenamento de itens da guilda
-  party_db              registro da parte (nome, líder, shared_exp, shared_item)
-  pet_db                banco de dados de objetos de estimação salvos
-  friend_db             banco de dados de amigos de personagens
-  mail_db               banco de dados de correio
-  auction_db            banco de dados de leilão
-  quest_db              banco de dados de realização de missões de personagens
-  homunculus_db         banco de dados de objetos homúnculos salvos
-  skill_homunculus_db   banco de dados de habilidades aprendidas do homúnculo
-  mercenary_db          banco de dados de objetos mercenários salvos (HP, SP, nível etc.)
-  mercenary_owner_db    link proprietário do personagem ao objeto mercenário salvar e usar estatísticas
-  elemental_db          banco de dados de objetos elementares salvos (HP, SP, FLEE etc.)
-  ragsrvinfo_db         registro de taxa de serviço de mapa (semelhante a 'conf / battle / drop.conf', possivelmente sobra?)
-  skillcooldown_db      recargas de habilidade de personagem na desconexão
-  bonus_script_db       caractere bonus_script na desconexão
+  char_db               all char-related information
+  hotkey_db             hotkeys set for each character
+  scdata_db             character status at disconnection
+  cart_db               list of items in each character's cart
+  inventory_db          list of items in each character's inventory
+  charlog_db            char-serv logs
+  storage_db            list of items in each character's storage (Kafra)
+  reg_db                permanent character variables (ex. ADVJOB)
+  skill_db              character learned skill database
+  interlog_db           inter-serv logs
+  memo_db               character Memo_point database 
+  guild_db              guild record (name, master, lv, exp, emblem, etc.)
+  guild_alliance_db     guild relations database (allies, enemies)
+  guild_castle_db       guild owned castle database
+  guild_expulsion_db    guild expulsion logs
+  guild_member_db       guild current member titles and positions
+  guild_skill_db        guild learned skills database
+  guild_position_db     guild positions configuration (names, taxes, rights)
+  guild_storage_db      guild item storage
+  party_db              party record (name, leader, shared_exp, shared_item)
+  pet_db                saved pet objects database
+  friend_db             character friends database
+  mail_db               mail database
+  auction_db            auction database
+  quest_db              character quest realisation database
+  homunculus_db         saved homunculus objects database
+  skill_homunculus_db   homunculus learned skills database
+  mercenary_db          saved mercenary objects database (HP, SP, level, etc.)
+  mercenary_owner_db    character proprietary link to mercenary object save and use stats
+  elemental_db          saved Elemental objects database (HP, SP, FLEE, etc.)
+  ragsrvinfo_db         map-serv rate record (similar to 'conf/battle/drop.conf', possibly a leftover?)
+  skillcooldown_db      character skill cooldowns at disconnection
+  bonus_script_db       character bonus_script at disconnection
 
   ============
   | Map-serv |
   ============
 
-  Table                 Conteúdo
+  Table                 Contents
   -----                 --------
-  mapreg_db             variáveis globais permanentes de serviço de mapa (ex. $ agit_result_timer)
-  buyingstore_db        banco de dados de compradores ativos (map_pos, auxílio, título da loja etc.)
-  buyingstore_items_db  itens atualmente sendo comprados por compradores ativos
-  vending_db            banco de dados de fornecedores ao vivo (map_pos, auxílio, título da loja etc.)
-  vending_items_db      itens atualmente sendo vendidos por fornecedores ativos
+  mapreg_db             permanent map-serv global variables (ex. $agit_result_timer)
+  buyingstore_db        live buyers database (map_pos, aid, shop title, etc.)
+  buyingstore_items_db  items currently being purchased by live buyers
+  vending_db            live vendors database (map_pos, aid, shop title, etc.)
+  vending_items_db      items currently being sold by live vendors
 
-  As tabelas abaixo são alternativas opcionais aos bancos de dados TXT localizados em 'db/*.txt'.
+  The tables below are optional alternatives to TXT databases located in 'db/*.txt'.
 
   item_db               item database (Pre-Renewal)
   item_db_re            item database (Renewal)
@@ -164,44 +164,44 @@ For real table names, see 'conf/inter_athena.conf'.
   mob_skill_db2_re      monster skill database import (Renewal)
 
 ==================================
-| 5. Finalidades do pacote e do módulo |
+| 5. Package and Module Purposes |
 ==================================
-A lista a seguir descreve cada módulo e sua finalidade.
+The following list describes each module and its purpose.
 
   ============
   | 3rdparty |
   ============
-  A pasta '3rdparty/' contém bibliotecas usadas pelo projeto, mas não são mantidas por nós.
+  The '3rdparty/' folder contains libraries used by the project but are not maintained by us.
 
   ==========
   | Common |
   ==========
-  A pasta 'src/common' contém todos os módulos usados por mais de 1 serv.
+  The 'src/common' folder contains all the modules which are used by more then 1 serv.
 
-  Module         Descrição
+  Module         Description
   ------         -----------
-  cbasetypes     adaptador para OS e especificação de arco (nome da função, representação de bits)
-  cli            manipulação de interface de linha do console (obtenha argumentos do terminal no início e no tempo de execução)
-  conf           fachada da libconfig api
-  core           Entrada do programa PRINCIPAL (a inicialização de cada servidor começa aqui)
-  db             módulo de banco de dados (criar, analisar e destruir bancos de dados)
-  des            Algoritmo padrão de criptografia de dados modificado para rAthena
-  ers            Sistema de Reutilização de Entrada para ajudar na alocação de memória
-  grfio          lida com arquivos * .grf (procura por arquivos neles e os decodifica)
-  malloc         lida com a alocação de memória de tempo de execução (para que o gerenciador de memória possa verificar vazamentos)
-  mapindex       lida com o processamento e a leitura do mapcache.dat
-  md5calc        oferece criptografia md5
-  mmo.hpp        estruturas comuns e define entre serv
-  msg_conf       lida com msg no src da configuração
-  nullpo         informações de verificações e despejos no modo de depuração
-  random         geração de números aleatórios
-  showmsg        exibir mensagens no console com uma determinada cor
-  socket         manuseio de tomadas (ouvir, fechar, abrir, etc.)
-  sql.cpp        Proxy de banco de dados MySQL
-  strlib.cpp     manuseio de cordas
-  timer.cpp      funções relacionadas ao temporizador
-  utils.cpp      funções diversas
-  winapi.hpp     O Windows redefine e inclui
+  cbasetypes     adapter to OS and arch specification (function name, bit representation)
+  cli            console Line Interface handling (get arguments from terminal at beginning and runtime) 
+  conf           facade of libconfig api
+  core           MAIN program entry (initialization of each serv starts here)
+  db             database module (create, parse, and destroy databases)
+  des            Data Encryption Standard algorithm modified for rAthena
+  ers            Entry Reusage System to help memory allocation
+  grfio          handles *.grf files (searches for files in them and decodes them)
+  malloc         handles runtime memory allocation (so that memory manager could check for leaks)
+  mapindex       handles the processing and reading of the mapcache.dat
+  md5calc        offers md5 encryption
+  mmo.hpp        common structures and defines across serv
+  msg_conf       handles msg in src from configuration
+  nullpo         checks and dumps info for debug mode
+  random         generation of random numbers
+  showmsg        display messages in console with a certain color
+  socket         handling of sockets (listening, close, open, etc.)
+  sql.cpp        MySQL database proxy
+  strlib.cpp     string handling
+  timer.cpp      timer-related functions
+  utils.cpp      misc functions
+  winapi.hpp     Windows redefine and include
 
   ==============
   | Login-serv |

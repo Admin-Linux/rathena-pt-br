@@ -1,27 +1,24 @@
-//===== rAthena Script =======================================
+//===== rAthena Script ======================================= 
 //= Hugel Airport NPCs
-//===== By: ==================================================
+//===== By: ================================================== 
 //= rAthena Dev Team
 //===== Current Version: =====================================
 //= 1.0
-//===== Compatible With: =====================================
+//===== Compatible With: ===================================== 
 //= rAthena Project
-//===== Description: =========================================
+//===== Description: ========================================= 
 //= Hugel Airport NPCs
-//===== Additional Comments: =================================
+//===== Additional Comments: ================================= 
 //= 1.0 First version.
-//= traduzido por [Haikenz]
-//= revisado por [Admin-Linux]
-//============================================================
-
+//============================================================ 
 
 hugel,178,142,0	script	toairplane#hugel	45,1,1,{
 	end;
 OnTouch:
-	mes "Para usar o aeroplano, você precisará pagar uma taxa de 1,200 zenys ou possuir um Bilhete para o Aeroplano.";
-	mes "Gostaria de utilizar nossos serviços?";
+	mes "To use the airship, you are required to pay 1,200 zeny or a Free Airship Ticket.";
+	mes "Would you like to use the service?";
 	next;
-	if (select("Sim.:Não.") == 1) {
+	if (select("Yes:No") == 1) {
 		if (countitem(7311) > 0) {
 			delitem 7311,1; //Free_Flying_Ship_Ticket
 			warp "airplane",244,58;
@@ -32,10 +29,10 @@ OnTouch:
 			warp "airplane",244,58;
 			end;
 		}
-		mes "Desculpe, mas você não possui o zeny necessário.";
-		mes "Lembre-se, você precisa possuir o Bilhete para o Aeroplano, ou possuir a taxa de embarque equivalente a 1,200 zenys.";
+		mes "I am sorry, but you do not have enough money.";
+		mes "Please remember, you are required to pay 1,200 zeny to use the service.";
 		close;
 	}
-	mes "Obrigado, e volte novamente.";
+	mes "Thank you, please come again.";
 	close;
 }

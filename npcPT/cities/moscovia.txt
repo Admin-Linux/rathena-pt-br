@@ -1,0 +1,135 @@
+//===== Script rAthena =========================================
+//= Cidade de Moscovia
+//===== Por: ===================================================
+//= Kisuka
+//===== Versão atual: ==========================================
+//= 1,2
+//===== Compatível com: ========================================
+//= Projeto rAthena
+//===== Descrição: =============================================
+//= Script da cidade de Moscovia
+//===== Comentários adicionais: ================================
+//= 1.0 Primeira versão. [Kisuka]
+//= 1.1 Moradores removidos (eles fazem parte de uma missão). [Kisuka]
+//= 1.2 Movido o NPC de Alberta para caminhos anteriores/anteriores. [Euphy]
+//= Traduzido por [Admin-Linux]
+//==============================================================
+
+// Moscovia Transportation :: mosk_trans
+//============================================================
+-	script	::PR_Officer_moscovia	-1,{
+	mes "[Moscovia P.R. Officer]";
+	mes "Moscóvia! Você conhece Moscóvia?";
+	mes "O paraíso em meio ao mar sem fim!";
+	mes "Moscóvia é um lugar místico e de aventuras.";
+	next;
+	switch(select("Sobre Moscóvia...:Ir para Moscóvia.:Cancelar")) {
+		case 1:
+			mes "[Moscovia P.R. Officer]";
+			mes "Moscóvia é um lindo reino ";
+			mes "que fica em uma ilha  ";
+			mes "localizada ao norte de Rune-Midgard.";
+			next;
+			mes "[Moscovia P.R. Officer]";
+			mes "Estou certa de que você vai se encantar com as";
+			mes "maravilhosas paisagens de Moscóvia,";
+			mes "a esplêndida capela";
+			mes "e o palácio.";
+			next;
+			mes "[Moscovia P.R. Officer]";
+			mes "Estou feliz que posso mostrar a você ";
+			mes "a nossa linda terra-natal";
+			mes "depois que o longo inverno de Moscóvia passou.";
+			mes "Nosso inverno é muito frio!";
+			next;
+			mes "[Moscovia P.R. Officer]";
+			mes "Se estiver com vontade de visitar Moscóvia,";
+			mes "aproveite esta chance!";
+			mes "Eu garanto que vai ter uma ótima";
+			mes "viagem para Moscóvia!";
+			close;
+		case 2:
+			mes "[Moscovia P.R. Officer]";
+			mes "Certo então, vamos começar.";
+			mes "O preço total é 10,000 zenys ";
+			mes "para ir até Moscóvia.";
+			mes "Mas quando quiser voltar,";
+			mes "você não vai precisar pagar...";
+			next;
+			mes "[Moscovia P.R. Officer]";
+			mes "Podemos ir agora?";
+			next;
+			if (select("Vamos!:Cancelar") == 2) {
+				mes "[Moscovia P.R. Officer]";
+				mes "Se você estiver ocupado agora,";
+				mes "por favor, fale comigo de novo quando quiser.";
+				mes "Estou sempre pronta para ser sua guia pela Moscóvia.";
+				close;
+			}
+			if (Zeny < 10000) {
+				mes "[Moscovia P.R. Officer]";
+				mes "Desculpe, mas você não tem";
+				mes "zenys suficientes.";
+				mes "é preciso 10,000 zenys ";
+				mes "para ir até Moscóvia.";
+				mes "Muito obrigada.";
+				close;
+			} else {
+				mes "[Moscovia P.R. Officer]";
+				mes "Certo, então, estamos partindo.";
+				close2;
+				set Zeny,Zeny - 10000;
+				warp "moscovia",163,55;
+				end;
+			}
+		case 3:
+			mes "[Moscovia P.R. Officer]";
+  			mes "Se você estiver ocupado agora,";
+			mes "por favor, fale comigo de novo quando quiser.";
+	  		mes "Estou sempre pronta para ser sua guia pela Moscóvia.";
+			close;
+	}
+}
+
+moscovia,166,53,4	script	Moscovia P.R. Officer#2	960,{
+	mes "[Moscovia P.R. Officer]";
+	mes "E então, como foi a sua viagem?";
+	mes "Leva boas lembranças de Moscóvia?";
+	mes "Um navio está saindo agora ";
+	mes "para Rune-Midgard.";
+	next;
+	if (select("Retornar para Alberta:Cancelar") == 2) {
+		mes "[Moscovia P.R. Officer]";
+		mes "Se você quiser ver mais,";
+		mes "leve o tempo que quiser.";
+		close;
+	}
+	mes "[Moscovia P.R. Officer]";
+	mes "Você pode vir quando quiser.";
+	mes "Certo então, vamos lá.";
+	close2;
+	if (checkre(0))
+		warp "alberta",244,52;
+	else
+		warp "alberta",243,67;
+	end;
+}
+
+// Moscovia Palace :: mos_swan
+//============================================================
+moscovia,253,166,4	script	Soldier#mosk1	966,{
+	mes "[Soldier]";
+	mes "Lá está nosso Czar no palácio. Ele governa a nossa Moscovia.";
+	mes "Por favor, tome cuidado para não irritá-lo. .";
+	close;
+}
+
+-	script	Soldier#mosk::MoscSoldier	966,{
+	mes "[Soldier]";
+	mes "Por favor, fique quieto ou o Czar vai se irritar.";
+	close;
+}
+mosk_in,118,66,5	duplicate(MoscSoldier)	Soldier#mosk02	966
+mosk_in,133,110,3	duplicate(MoscSoldier)	Soldier#mosk03	966
+mosk_in,133,73,3	duplicate(MoscSoldier)	Soldier#mosk04	966
+mosk_in,113,124,5	duplicate(MoscSoldier)	Soldier#mosk05	966

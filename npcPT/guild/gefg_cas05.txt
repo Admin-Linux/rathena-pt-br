@@ -1,0 +1,126 @@
+//===== rAthena Script =======================================
+//= War of Emperium (Geffen) - Mersetzdeitz
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= NPCs that relate to Geffen Guild Castle 5
+//===== Additional Comments: =================================
+//= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
+//= 1.1 Removed dialog from interior flags. [L0ne_W0lf]
+//= 1.2 Partially rewrote Script. [Masao]
+//= traduzido por [Haikenz]
+//= revisado por [Admin-Linux]
+//============================================================
+
+// Guild Flag (Outside Castle)
+//============================================================
+-	script	Mersetzdeitz#1::OutsideFlagsG5	722,{
+
+	set .@GID, GetCastleData("gefg_cas05",1);
+
+	if (.@GID == 0) {
+		mes "[ Decreto de Rune-Midgard ]";
+		mes " ";
+		mes "1. Pela ordenança do Divino Reino de Rune-Midgad, declaramos que não há nenhum mestre formal deste castelo.";
+		mes " ";
+		mes "2. Para quem puder superar todas provações e destruír o Emperium.";
+		mes "O rei vai reconhecer esse como proprietário do castelo.";
+		close;
+	}
+	if (getcharid(2) == .@GID) {
+		mes "[ Voz Sussurrando ]";
+		mes "Aos bravos...";
+		mes "Deseja retornar ao seu palácio de honra?";
+		next;
+		if(select("Retornar ao Castelo.:Sair.") == 1) {
+			close2;
+			if (getcharid(2) == GetCastleData("gefg_cas05",1)) {
+				warp "gefg_cas05",168,31;
+				end;
+			}
+			end;
+		}
+		close;
+	}
+	mes "[ Decreto de Rune-Midgard ]";
+	mes " ";
+	mes "1. Pela ordenança do Divino Reino de Rune-Midgard que este lugar é de posse privada do Clã:";
+	mes "^ff0000"+GetGuildName(.@GID)+"^000000.";
+	mes " ";
+	mes "2. O mestre deste castelo ^ff0000"+GetGuildName(.@GID)+"^000000 é ^ff0000"+GetGuildMaster(.@GID)+"^000000.";
+	mes "Se há alguém que se opõe a isso.";
+	mes "Prove sua força e honra com uma lâmina de aço em sua mão.";
+	close;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+gef_fild13,302,87,7	duplicate(OutsideFlagsG5)	Mersetzdeitz#1-2	722
+gef_fild13,313,83,0	duplicate(OutsideFlagsG5)	Mersetzdeitz#2	722
+gef_fild13,252,51,2	duplicate(OutsideFlagsG5)	Mersetzdeitz#3	722
+gef_fild13,26,147,2	duplicate(OutsideFlagsG5)	Mersetzdeitz#4	722
+
+// Guild Flag (Inside Castle)
+//============================================================
+-	script	Mersetzdeitz#5::InsideFlagsG5	722,{
+	end;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+gefg_cas05,77,185,7	duplicate(InsideFlagsG5)	Mersetzdeitz#5-2	722
+gefg_cas05,92,181,0	duplicate(InsideFlagsG5)	Mersetzdeitz#6	722
+gefg_cas05,83,158,1	duplicate(InsideFlagsG5)	Mersetzdeitz#7	722
+gefg_cas05,62,144,7	duplicate(InsideFlagsG5)	Mersetzdeitz#8	722
+gefg_cas05,62,66,4	duplicate(InsideFlagsG5)	Mersetzdeitz#9	722
+gefg_cas05,69,66,4	duplicate(InsideFlagsG5)	Mersetzdeitz#10	722
+
+// Guild Flag (Town)
+//============================================================
+geffen,131,123,6	duplicate(InsideFlagsG5)	Mersetzdeitz#11	722
+
+// Kafra Employee
+//============================================================
+gefg_cas05,61,52,5	duplicate(guildkafra)	Kafra Staff#gefg_cas05	117
+
+// Steward
+//============================================================
+gefg_cas05,70,52,3	duplicate(cm)	Byohre#gefg_cas05	55
+
+// Treasure Room Exit
+//============================================================
+gefg_cas05,149,107,0	script	#lever_G05	111,{
+	mes " ";
+	mes "Há uma alavanca pequena. Puxar isto?";
+	next;
+	if(select("Puxar.:Não Puxar.") == 1) {
+		close2;
+		warp "gefg_cas05",70,53;
+		end;
+	}
+	close;
+}
+
+// Guild Dungeon Switch
+//============================================================
+gefg_cas05,65,22,0	duplicate(gdlever)	#gefg_cas05	111
+
+// Guild Treasure Spawns
+//============================================================
+gefg_cas05,144,110,0	duplicate(Gld_Trea_Spawn)	Baú do Tesouro#gefg_cas05	-1
+
+// AGIT Manager
+//============================================================
+gefg_cas05,194,184,0	duplicate(Gld_Agit_Manager)	Agit#gefg_cas05	-1
+
+// Guardians
+//============================================================
+gefg_cas05,70,52,3	duplicate(Gld_Guard_Template)	Guardião#gefg_cas05	-1

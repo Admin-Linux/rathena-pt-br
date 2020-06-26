@@ -1,0 +1,140 @@
+//===== Script rAthena ==========================================
+//= Trocador de tarefas de classe avançada após as normais do kRO.
+//===== Por: ====================================================
+//= Nana
+//= finalizado, otimizado e testado pelo Lupus
+//===== Versão atual: ===========================================
+//= 1.3
+//===== Compatível com: =========================================
+//= Projeto rAthena
+//===== Descrição: ==============================================
+//= Trocador de tarefas de classe avançada após as normais do kRO.
+//===== Comentários adicionais: =================================
+//= 1.1 Transformado tudo em funções, verificações adicionais, etc. [Lupus]
+//= 1.2 Transformaram números em constantes. [Vicious]
+//= 1.3 Agora salva/restaura todas as habilidades da missão [Lupus]
+//= 1.4 Os criadores não adquiriram suas habilidades de homúnculo [Lemongrass]
+//= Traduzido por [Admin-Linux]
+//===============================================================
+
+valkyrie,53,50,3	script	Biochemist#Valkyrie	122,{
+	if (Class == Job_Creator && bioeth == 13 && getskilllv("AM_BIOETHICS") == 0) {
+		mes "[Biochemist]";
+		mes "Ah, você veio para";
+		mes "recuperar as memórias";
+		mes "perdido para você? Sim, você";
+		mes "deve estar aqui para o";
+		mes "segredos da vida que";
+		mes "já foi seu ...";
+		next;
+		if (select("Sim:Não") == 1) {
+			mes "[Biochemist]";
+			mes "Feche os olhos e";
+			mes "coloque sua mente em repouso.";
+			mes "Voltaremos ao seu";
+			mes "passado para lembrar o";
+			mes "fragmentos dos seus perdidos";
+			mes "memórias.";
+			next;
+			mes "[Biochemist]";
+			mes "Quando você abre os olhos,";
+			mes "você vai se lembrar claramente";
+			mes "o segredo da vida. Você";
+			mes "também se lembra do peso de";
+			mes "responsabilidade em usá-los";
+			mes "segredos para os fins certos ...";
+			next;
+			skill "AM_BIOETHICS",1,SKILL_PERM;
+			mes "[Biochemist]";
+			mes "Abra seus olhos ...";
+			mes "Agora que você tem";
+			mes "lembrou como";
+			mes "criar vida artificial, eu apenas";
+			mes "peça que você trate todo o seu";
+			mes "criações com respeito.";
+			close;
+		}
+		mes "[Biochemist]";
+		mes "Se você deseja";
+		mes "recuperar seus perdidos";
+		mes "memórias, por favor";
+		mes "volte para mim.";
+		mes "O segredo para criar";
+		mes "a vida não é nada insignificante ...";
+		close;
+	}
+	else if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[Biochemist]";
+			mes "Parabéns.";
+			mes "Honra aos guerreiros!";
+			close;
+		}
+		mes "[Biochemist]";
+		mes "É estranho isso";
+		mes "alguém como eu está aqui.";
+		mes "Mas até alguém habilidoso";
+		mes "nos caminhos da ciência";
+		mes "pode ser um herói ??.";
+		next;
+		mes "[Biochemist]";
+		mes "Neste caso,";
+		mes "não é necessariamente";
+		mes "os meios que usei, mas";
+		mes "os fins para os quais eu";
+		mes "lutei que me valeu";
+		mes "um lugar em Valhalla ...";
+		close;
+	}
+	else if (ADVJOB == Job_Creator && Class == Job_Merchant_High && JobLevel > 39) {
+		mes "[Biochemist]";
+		mes "Sim ...";
+		mes "Está na hora.";
+		mes "Precisamos de mais gênios";
+		mes "como você em Midgard.";
+		next;
+		mes "[Biochemist]";
+		mes "Você gostaria";
+		mes "se tornar um bioquímico?";
+		next;
+		if (select("Não.:Sim.") == 1) {
+			mes "[Biochemist]";
+			mes "Quando estiver pronto,";
+			mes "sinta-se à vontade para voltar.";
+			mes "Honra aos guerreiros!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[Biochemist]";
+			mes "Ainda é possível para você aprender mais habilidades. Por favor, use";
+			mes "todos os seus Pontos de Habilidade restantes antes de retornar para mim.";
+			close;
+		}
+		jobchange Job_Creator;
+		if (bioeth == 13)
+			skill "AM_BIOETHICS",1,SKILL_PERM;
+		set ADVJOB,0;
+		mes "[Biochemist]";
+		mes "Parabéns!";
+		mes "Como Bioquímico,";
+		mes "Espero que você use o seu";
+		mes "vasto conhecimento para os";
+		mes "propósitos certos.";
+		close;
+	}
+	else {
+		mes "[Biochemist]";
+		mes "Bem-vindo";
+		mes "para Valhalla";
+		mes "o Salão da Honra.";
+		next;
+		mes "[Biochemist]";
+		mes "Por favor, faça";
+		mes "você está confortável";
+		mes "enquanto você estiver aqui.";
+		mes "Honra aos guerreiros!";
+		close;
+	}
+}
+

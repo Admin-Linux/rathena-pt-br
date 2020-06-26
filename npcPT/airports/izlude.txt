@@ -1,0 +1,55 @@
+//===== rAthena Script =======================================
+//= Izlude Airport NPCs
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Izlude Airport NPCs
+//===== Additional Comments: =================================
+//= 1.0 First version.
+//= traduzido por [Haikenz]
+//= revisado por [Admin-Linux]
+//============================================================
+
+
+-	script	::Airship_Staff_izlude	-1,{
+	mes "[Equipe do Aeroporto]";
+	mes "Bem-vind"+(Sex?"o":"a")+"! Gostaria de";
+	mes "embarcar no voo que te leva a";
+	mes "Juno e Rachel?";
+	next;
+	if (select("Embarcar no voo para Juno/Rachel.:Cancelar.") == 1) {
+		mes "[Equipe do Aeroporto]";
+		mes "O voo tem um custo de";
+		mes "1,200 zeny. Ou caso você tenha";
+		mes "um Bilhete para o Aeroplano,";
+		mes "sua taxa não é cobrada. Então,";
+		mes "gostaria de embarcar?";
+		next;
+		if (select("Sim.:Não.") == 1) {
+			if (countitem(7311) > 0) {
+				delitem 7311,1; //Free_Flying_Ship_Ticket
+				warp "airplane_01",244,58;
+				end;
+			}
+			if (Zeny >= 1200) {
+				set Zeny, Zeny - 1200;
+				warp "airplane_01",244,58;
+				end;
+			}
+			mes "[Equipe do Aeroporto]";
+			mes "Desculpe, mas você não";
+			mes "possui 1,200 zenys para";
+			mes "pagar o embarque.";
+			close;
+		}
+	}
+	mes "[Equipe do Aeroporto]";
+	mes "Obrigado, e por favor";
+	mes "volte novamente.";
+	mes "Tenha um bom dia.";
+	close;
+}

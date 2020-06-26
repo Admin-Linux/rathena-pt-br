@@ -15,8 +15,6 @@
 //= 1.6 Added VIP features and created a reward function. [Euphy]
 //= 1.7 Made Crystals immune to attacks until Guardians are defeated. [Cydh/Aleos]
 //= 1.8 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
-//= traduzido por [Haikenz]
-//= revisado por [Admin-Linux]
 //============================================================
 
 // Waiting Room NPCs
@@ -24,7 +22,7 @@
 bat_room,86,227,4	script	Lieutenant Ator	418,{
 	end;
 OnInit:
-	waitingroom "Estação de Batalha",11,"start#bat_b01::OnReadyCheck",1,0,80;
+	waitingroom "Battle Station",11,"start#bat_b01::OnReadyCheck",1,0,80;
 	end;
 OnEnterBG:
 	set $@FlaviusBG1_id1, waitingroom2bg("bat_b01",10,290,"start#bat_b01::OnGuillaumeQuit","");
@@ -34,7 +32,7 @@ OnEnterBG:
 bat_room,85,204,0	script	Lieutenant Thelokus	414,{
 	end;
 OnInit:
-	waitingroom "Estação de Batalha",11,"start#bat_b01::OnReadyCheck",1,0,80;
+	waitingroom "Battle Station",11,"start#bat_b01::OnReadyCheck",1,0,80;
 	end;
 OnEnterBG:
 	set $@FlaviusBG1_id2, waitingroom2bg("bat_b01",390,10,"start#bat_b01::OnCroixQuit","");
@@ -163,8 +161,8 @@ OnTimer10000:
 
 bat_b01,1,1,3	script	OBJ#bat_b01_a	844,{
 OnEnable:
-	$@FlavBG1_C1_ID = bg_monster($@FlaviusBG1_id1,"bat_b01",61,150,"Cristal Rosa",1915,"OBJ#bat_b01_a::OnMyMobDead");
-	setunitdata $@FlavBG1_C1_ID,UMOB_DMGIMMUNE,1; // Torna o Crystal imune a dano até que os Guardiões sejam derrotados
+	$@FlavBG1_C1_ID = bg_monster($@FlaviusBG1_id1,"bat_b01",61,150,"Pink Crystal",1915,"OBJ#bat_b01_a::OnMyMobDead");
+	setunitdata $@FlavBG1_C1_ID,UMOB_DMGIMMUNE,1; // Make Crystal immune to damage until Guardians are defeated
 	end;
 
 OnKill:
@@ -173,7 +171,7 @@ OnKill:
 
 OnMyMobDead:
 	if (mobcount("bat_b01","OBJ#bat_b01_a::OnMyMobDead") < 1) {
-		mapannounce "bat_b01", "O Cristal de Guillaume foi destruído.",bc_map,"0xFFCE00";
+		mapannounce "bat_b01", "Guillaume's Crystal has been destroyed.",bc_map,"0xFFCE00";
 		if ($@Croix_ScoreBG1 > 0) {
 			set $@FlaviusBG1_Victory,2;
 			set $@Croix_ScoreBG1,$@Croix_ScoreBG1+1;
@@ -199,7 +197,7 @@ OnMyMobDead:
 
 bat_b01,1,2,3	script	OBJ#bat_b01_b	844,{
 OnEnable:
-	$@FlavBG1_C2_ID = bg_monster($@FlaviusBG1_id2,"bat_b01",328,150,"Cristal Azul",1914,"OBJ#bat_b01_b::OnMyMobDead");
+	$@FlavBG1_C2_ID = bg_monster($@FlaviusBG1_id2,"bat_b01",328,150,"Blue Crystal",1914,"OBJ#bat_b01_b::OnMyMobDead");
 	setunitdata $@FlavBG1_C2_ID,UMOB_DMGIMMUNE,1; // Make Crystal immune to damage until Guardians are defeated
 	end;
 
@@ -209,7 +207,7 @@ OnKill:
 
 OnMyMobDead:
 	if (mobcount("bat_b01","OBJ#bat_b01_b::OnMyMobDead") < 1) {
-		mapannounce "bat_b01", "O Cristal de Croix foi destruído.",bc_map,"0xFFCE00";
+		mapannounce "bat_b01", "Croix's Crystal has been destroyed.",bc_map,"0xFFCE00";
 		if ($@Guill_ScoreBG1 > 0) {
 			set $@FlaviusBG1_Victory,1;
 			set $@Guill_ScoreBG1,$@Guill_ScoreBG1+1;
@@ -235,8 +233,8 @@ OnMyMobDead:
 
 bat_b01,1,3,3	script	guardian#bat_b01_a	844,{
 OnEnable:
-	bg_monster $@FlaviusBG1_id1,"bat_b01",108,159,"Guardião de Guillaume",1949,"guardian#bat_b01_a::OnMyMobDead";
-	bg_monster $@FlaviusBG1_id1,"bat_b01",108,141,"Guardião de Guillaume",1949,"guardian#bat_b01_a::OnMyMobDead";
+	bg_monster $@FlaviusBG1_id1,"bat_b01",108,159,"Guillaume Camp Guardian",1949,"guardian#bat_b01_a::OnMyMobDead";
+	bg_monster $@FlaviusBG1_id1,"bat_b01",108,141,"Guillaume Camp Guardian",1949,"guardian#bat_b01_a::OnMyMobDead";
 	end;
 
 OnKill:
@@ -246,7 +244,7 @@ OnKill:
 OnMyMobDead:
 	if (mobcount("bat_b01","guardian#bat_b01_a::OnMyMobDead") < 1) {
 		donpcevent "cell#bat_b01_a::OnGreen";
-		mapannounce "bat_b01", "O Guardião que protege o cristal de Guillaume foi derrotado.",bc_map,"0xFFCE00";
+		mapannounce "bat_b01", "The Guardian protecting Guillaume's Crystal has been slain.",bc_map,"0xFFCE00";
 		setunitdata $@FlavBG1_C1_ID,UMOB_DMGIMMUNE,0; // Make Crystal damageable again
 	}
 	end;
@@ -254,8 +252,8 @@ OnMyMobDead:
 
 bat_b01,1,3,3	script	guardian#bat_b01_b	844,{
 OnEnable:
-	bg_monster $@FlaviusBG1_id2,"bat_b01",307,160,"Guardião de Croix",1949,"guardian#bat_b01_b::OnMyMobDead";
-	bg_monster $@FlaviusBG1_id2,"bat_b01",307,138,"Guardião de Croix",1949,"guardian#bat_b01_b::OnMyMobDead";
+	bg_monster $@FlaviusBG1_id2,"bat_b01",307,160,"Croix Camp Guardian",1949,"guardian#bat_b01_b::OnMyMobDead";
+	bg_monster $@FlaviusBG1_id2,"bat_b01",307,138,"Croix Camp Guardian",1949,"guardian#bat_b01_b::OnMyMobDead";
 	end;
 
 OnKill:
@@ -265,7 +263,7 @@ OnKill:
 OnMyMobDead:
 	if (mobcount("bat_b01","guardian#bat_b01_b::OnMyMobDead") < 1) {
 		donpcevent "cell#bat_b01_b::OnGreen";
-		mapannounce "bat_b01", "O Guardião que protege o cristal de Croix foi derrotado.",bc_map,"0xFFCE00";
+		mapannounce "bat_b01", "The Guardian protecting Croix's Crystal has been slain.",bc_map,"0xFFCE00";
 		setunitdata $@FlavBG1_C2_ID,UMOB_DMGIMMUNE,0; // Make Crystal damageable again
 	}
 	end;
@@ -310,9 +308,9 @@ OnStop:
 bat_b01,10,294,3	script	Battle Therapist#b01_a	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "Apenas feche seus olhos";
-	mes "e respire fundo.";
-	mes "Você pode estar livre da dor.";
+	mes "Just close your eyes,";
+	mes "and take a deep breath.";
+	mes "You can be free from pain.";
 	close;
 
 OnTimer25000:
@@ -360,9 +358,9 @@ OnTouch:
 bat_b01,389,14,3	script	Battle Therapist#b01_b	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "Apenas feche seus olhos";
-	mes "e respire fundo.";
-	mes "Você pode estar livre da dor.";
+	mes "Just close your eyes,";
+	mes "and take a deep breath.";
+	mes "You can be free from pain.";
 	close;
 
 OnTimer25000:
@@ -469,31 +467,31 @@ OnStop:
 	end;
 
 OnTimer7000:
-	mapannounce "bat_b01", "Soldado de Guillaume: Vamos atacar para destruir esse cristal!",bc_map,"0xFF9900";
+	mapannounce "bat_b01", "Guillaume Vintenar Axl Rose : Let's attack to destroy that Crystal!",bc_map,"0xFF9900";
 	end;
 
 OnTimer8000:
-	mapannounce "bat_b01", "Soldado de Croix: Mesmo que Guillaume esteja lutando contra nós, a vitória é nossa. Vamos mostrar a eles nosso poder.",bc_map,"0xFF99CC";
+	mapannounce "bat_b01", "Croix Vintenar Swandery : Even though Guillaume is struggling to win against us, the victory is ours. Let's show them our power.",bc_map,"0xFF99CC";
 	end;
 
 OnTimer1800000:
-	mapannounce "bat_b01", "Marollo VII: Guillaume Marollo, Croix Marollo! E seus seguidores!",bc_map,"0x99CC00";
+	mapannounce "bat_b01", "Marollo VII : Guillaume Marollo, Croix Marollo! And their followers!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1803000:
-	mapannounce "bat_b01", "Marollo VII: Ambos os campos são competitivos, por isso é difícil julgar qual time é superior.",bc_map,"0x99CC00";
+	mapannounce "bat_b01", "Marollo VII : Both camps are competitive, so it's hard to judge which team is superior.",bc_map,"0x99CC00";
 	end;
 
 OnTimer1808000:
-	mapannounce "bat_b01", "Marollo VII: Esta batalha de Flavius é uma perda de time. Decidirei vitória e derrota com seu progresso.",bc_map,"0x99CC00";
+	mapannounce "bat_b01", "Marollo VII : This battle of Flavian is such a waste of time. I will decide victory and defeat by your progress.",bc_map,"0x99CC00";
 	end;
 
 OnTimer1822000:
-	mapannounce "bat_b01", "Marollo VII: Se você não pode aceitar os resultados, tente novamente em outra batalha no vale!",bc_map,"0x99CC00";
+	mapannounce "bat_b01", "Marollo VII : If you can't accept the results, try again in another valley battle!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1825000:
-	mapannounce "bat_b01", "Axl Rose, Swandery: Sim, Senhor.",bc_map,"0x99CC00";
+	mapannounce "bat_b01", "Axl Rose, Swandery : Yes, sir.",bc_map,"0x99CC00";
 	end;
 
 OnTimer1830000:
@@ -548,8 +546,7 @@ bat_b01,10,294,3	script	Vintenar#bat_b01_aover	419,{
 	}
 	else {
 		mes "[Axl Rose]";
-		mes "Por que você está aqui, mercenário Croix?";
-		mes "Eu definitivamente tenho certeza da vitória contra os tolos Croix como você. Ha!";
+		mes "Why are you here, Croix mercenary? I am definitely sure of victory against foolish Croix such as you. Ha!";
 		close;
 	}
 	bg_leave;
@@ -566,7 +563,7 @@ bat_b01,389,14,3	script	Vintenar#bat_b01_bover	415,{
 	set .@A_B_gap,$@Guill_ScoreBG1 - $@Croix_ScoreBG1;
 	if ($@FlaviusBG1_id2 == getcharid(4)) {
 		if (.@A_B_gap > 0)
-			callfunc "F_BG_Badge",1,"Croix","Flavius";
+			callfunc "F_BG_Badge",0,"Croix","Flavius"; //Guillaume wins
 		else if (.@A_B_gap == 0)
 			callfunc "F_BG_Badge",0,"Croix","Flavius"; //Tie
 		else
@@ -574,7 +571,7 @@ bat_b01,389,14,3	script	Vintenar#bat_b01_bover	415,{
 	}
 	else {
 		mes "[Swandery]";
-		mes "Por que você vem aqui como um Guillaume? Você será enviado para onde você deveria estar!";
+		mes "Why do you come here as a Guillaume? You will be sent to where you should be!";
 		close;
 	}
 	bg_leave;
@@ -590,21 +587,21 @@ OnInit:
 bat_b01,1,10,3	script	Release all#b01	81,{
 	set .@i, callfunc("F_GM_NPC",1854,0);
 	if (.@i == -1) {
-		mes "Cancelado.";
+		mes "Cancelled.";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "Posso te ajudar?";
+		mes "May I help you?";
 		next;
-		switch(select("Libertar.:Cancelar.")) {
+		switch(select("Release all.:Cancel.")) {
 		case 1:
-			mes "Adeus.";
+			mes "Bye.";
 			close2;
 			mapwarp "bat_b01","bat_room",154,150;
 			end;
 		case 2:
-			mes "Cancelado.";
+			mes "Cancelled.";
 			close;
 		}
 	}

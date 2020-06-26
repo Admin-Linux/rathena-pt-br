@@ -546,19 +546,19 @@ void quest_update_objective(struct map_session_data *sd, int mob_id)
 
 		// Process quest objectives
 		for (int j = 0; j < qi->objectives.size(); j++) {
-			if (qi->objectives[j]->mob_id == mob_id && sd->quest_log[i].count[j] < qi->objectives[j]->count )  {
+			if (qi->objectives[j]->mob_id == mob_id && sd->quest_log[i].count[j] < qi->objectives[j]->count)  {
 				sd->quest_log[i].count[j]++;
 				sd->save_quest = true;
 				clif_quest_update_objective(sd, &sd->quest_log[i], mob_id);
 			}
 		}
 
-		// process quest-granted extra drop bonuses
+		// Process quest-granted extra drop bonuses
 		for (const auto &it : qi->dropitem) {
 			if (it->mob_id != 0 && it->mob_id != mob_id)
 				continue;
 			if (it->rate < 10000 && rnd()%10000 >= it->rate)
-				continue;// TODO: Should this be affected by server rates?
+				continue; // TODO: Should this be affected by server rates?
 			if (!itemdb_exists(it->nameid))
 				continue;
 
@@ -572,7 +572,7 @@ void quest_update_objective(struct map_session_data *sd, int mob_id)
 //#endif
 //			if (it.isGUID)
 //				item.unique_id = pc_generate_unique_id(sd);
-
+			
 			char temp;
 
 			if ((temp = pc_additem(sd, &item, 1, LOG_TYPE_QUEST)) != ADDITEM_SUCCESS) // Failed to obtain the item
@@ -718,7 +718,7 @@ bool QuestDatabase::reload() {
 	if (!TypesafeYamlDatabase::reload())
 		return false;
 
-	// Atualize os dados das missões para os jogadores, para garantir que não restem entradas sobre as missões removidas.
+	// Update quest data for players, to ensure no entries about removed quests are left over.
 	map_foreachpc(&quest_reload_check_sub);
 	return true;
 }
@@ -737,4 +737,5 @@ void do_init_quest(void)
  * Finalizes the quest interface before shutdown.
  */
 void do_final_quest(void)
-{}
+{
+}
